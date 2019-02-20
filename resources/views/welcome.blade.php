@@ -80,7 +80,7 @@
                 <div class="top-right links">
 
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('documents/home') }}">Home</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -122,10 +122,10 @@
                               <h5 class="card-title">ยินดีต้อนรับ</h5>
                               <p class="card-text">คุณ : {{ Auth::user()->name }}</p>
                               <a href="{{ url('/home') }}" class="btn btn-primary">เริ่มต้นใช้งาน</a>
-                              <a href="{{ route('logout') }}"
+                              <a style="text-decoration: none;" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    &nbsp; {{ __('Logout') }}
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
