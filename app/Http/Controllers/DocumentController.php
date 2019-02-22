@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\view_documents;
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Auth;
 
 class DocumentController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
-        $this->user =  \Auth::user();
+        $this->user = \Auth::user();
     }
     /**
      * Display a listing of the resource.
@@ -20,13 +21,19 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $owner = 'sirachut';
+        $user = Auth::user();
     
-        $view_documents = view_documents::all()
-            ->where('name', $owner);
+        $view_documentsN = view_documents::all()
+            ->where('project_status','n')
+            ->where('name', $user->name);
 
+        $view_documentsD = view_documents::all()
+            ->where('project_status','d')
+            ->where('name', $user->name);
+            
         return view('documents.home')
-            ->with('documents',$view_documents);
+            ->with('documentsN',$view_documentsN)
+            ->with('documentsD',$view_documentsD);
     }
 
     /**

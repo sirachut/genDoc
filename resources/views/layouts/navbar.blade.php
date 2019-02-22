@@ -15,14 +15,14 @@
                 <ul class="navbar-nav mr-auto">
 
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="{{ url('/home') }}">เอกสาร <span class="sr-only">(current)</span></a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
+                    {{-- <li class="nav-item">
+                        <a class="nav-link" disabled href="#">จัดการผู้ใช้</a>
+                    </li> --}}
 
-                    <li class="nav-item dropdown">
+                   {{--  <li class="nav-item dropdown">
 
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Dropdown
@@ -39,7 +39,7 @@
                     
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#">Disabled</a>
-                    </li>
+                    </li> --}}
 
                 </ul>
 
@@ -65,14 +65,14 @@
                         <li class="nav-item dropdown">
 
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }} <span class="caret"></span>
+                               User: {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                                    {{ __('ออกจากระบบ') }}
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
