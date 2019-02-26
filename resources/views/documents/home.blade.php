@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('documents.app')
 
 @section('content')
 
@@ -30,15 +30,19 @@
             <div id="new_doc" class="container tab-pane active"><br>
 
                 <div class="row">
+                    
+                    @php
+                        $i=1;
+                    @endphp
 
                     @foreach ($documentsN as $key => $value)
                         <div class="col-sm-4">
                             <div class="card form-group">
                                 <div class="card-body">
-                                    <h5 class="card-title"><b>{{ $value->project_name }}</b></h5>
+                                    <h5 class="card-title"><b>{{ $i++ }}.{{ $value->project_name }}</b></h5>
                                     <h6 class="card-subtitle mb-2 text-muted">{{ $value->project_number }}</h6>
                                         <p class="card-text">{{ $value->project_department }}</p>
-                                    <a href="#" class="btn btn-success">ดูรายละเอียด</a>
+                                    <a href="{{ route('home.show', $value->project_id) }}" class="btn btn-success">ดูรายละเอียด</a>
                                 </div>
                             </div>
                         </div>
@@ -49,8 +53,7 @@
             </div>
 
             <div id="datatable" class="container tab-pane fade"><br>
-                @include('documents.datatable_doc_withbill')
-        
+                @include('documents.dochasbill')
             </div>
 
             <div id="menu2" class="container tab-pane fade"><br>
