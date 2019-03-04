@@ -8,6 +8,8 @@ class ProjectModel extends Model
 {
     public $incrementing = true;
 
+    protected $primaryKey = 'project_id';
+
     protected $table = 'projects';
     
     protected $fillable = [
@@ -24,4 +26,6 @@ class ProjectModel extends Model
         'created_at',
         'updated_at'
     ];
+
+    
 }

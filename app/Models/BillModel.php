@@ -8,6 +8,9 @@ class BillModel extends Model
 {
     public $incrementing = true;
 
+    protected $primaryKey = 'bill_id';
+
+
     protected $table = 'bills';
     
     protected $fillable = [

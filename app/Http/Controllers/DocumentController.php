@@ -3,11 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+// DATABASE MODEL
+use App\Models\ProjectModel;
+use App\Models\StoreModel;
 use App\Models\View_DocumentModel;
+
+// USER
 use Illuminate\Support\Facades\Auth;
 
 class DocumentController extends Controller
 {
+
+
     public function __construct()
     {
         $this->middleware('auth');
@@ -20,22 +29,49 @@ class DocumentController extends Controller
     public function index()
     {
         $user = Auth::user();
-    
-        // $view_documentsN = view_documents::all()
-        //     ->where('project_status','n')
-        //     ->where('name', $user->name);
-            
-        // $view_documentsD = view_documents::all()
-        //     ->where('project_status','d')
-        //     ->where('name', $user->name);
 
+        $Project_n_Queries = ProjectModel::all()
+            ->where('project_status','n')
+            ->where('id_fk', $user->id);
 
+        $Project_d_Queries = ProjectModel::all()
+            ->where('project_status','d')
+            ->where('id_fk', $user->id);
             
+        $StoreQueries = StoreModel::all()
+            ->where('id_fk', $user->id);
+            
+        return view('documents.home')
+            ->with('project_n_Q', $Project_n_Queries)
+            ->with('project_d_Q', $Project_d_Queries)
+            ->with('store_Q', $StoreQueries);
+        
+        // $queries = DB::table('projects')
+        //     ->join('users','projects.id_fk', '=' ,'users.id')
+        //     ->join('stores','projects.store_fk', '=' , 'stores.store_id')
+        //     ->join('bills','projects.bill_fk', '=', 'bills.bill_id')
+        //     ->where('projects.id_fk',$user->id)
+        //     ->select(
+        //         'projects.*', 
+        //         'users.name',
+        //         'stores.store_name',
+        //         'stores.store_tel',
+        //         'stores.store_teletex',
+        //         'stores.store_address',
+        //         'stores.store_employee',
+        //         'stores.store_employeeNumber',
+        //         'stores.bank_branch',
+        //         'stores.bank_number',
+        //         'stores.bank_account',
+        //         'stores.bank_name',
+        //         'bills.bill_number',
+        //     )
+        //     ->get();
+
         // return view('documents.home')
-        //     ->with('documentsD',$view_documentsD)
-        //     ->with('documentsN',$view_documentsN);
-            
-    }
+        //         ->with(['index' => $queries]);  
+
+        }
 
     /**
      * Show the form for creating a new resource.
@@ -61,21 +97,45 @@ class DocumentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\view_documents  $view_documents
+     * @param  \App\Models\ProjectModel  $projectModel
      * @return \Illuminate\Http\Response
      */
-    public function show(view_documents $view_documents)
+    public function show($project_id)
     {
-        return view('documents.show', $view_documents);
+        $queries = DB::table('projects')
+        ->where('projects.project_id',$project_id)
+        ->join('users','projects.id_fk', '=' ,'users.id')
+        ->join('stores','projects.store_fk', '=' , 'stores.store_id')
+        ->join('bills','projects.bill_fk', '=', 'bills.bill_id')
+        ->select(
+            'projects.*', 
+            'users.name',
+            'stores.store_name',
+            'stores.store_tel',
+            'stores.store_teletex',
+            'stores.store_address',
+            'stores.store_employee',
+            'stores.store_employeeNumber',
+            'stores.bank_branch',
+            'stores.bank_number',
+            'stores.bank_account',
+            'stores.bank_name',
+            'bills.bill_number',
+        )
+        ->first();
+
+
+        return view('documents.show')
+        ->with(['show' => $queries]);   
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\view_documents  $view_documents
+     * @param  \App\Models\ProjectModel  $projectModel
      * @return \Illuminate\Http\Response
      */
-    public function edit(view_documents $view_documents)
+    public function edit(ProjectModel $projectModel)
     {
         //
     }
@@ -84,10 +144,10 @@ class DocumentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\view_documents  $view_documents
+     * @param  \App\Models\ProjectModel  $projectModel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, view_documents $view_documents)
+    public function update(Request $request, ProjectModel $projectModel)
     {
         //
     }
@@ -95,11 +155,32 @@ class DocumentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\view_documents  $view_documents
+     * @param  \App\Models\ProjectModel  $projectModel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(view_documents $view_documents)
+    public function destroy(ProjectModel $ProjectModel, $id)
     {
-        //
+        $blog = ProjectModel::find($id);
+        $blog->delete();
+        return redirect()->route('home.index')
+                        ->with('success','ลบข้อมูลสำเร็จ');
     }
+
+    public static function DateThai($strDate)
+    {
+        $strYear = date("Y",strtotime($strDate))+543;
+        $strMonth= date("n",strtotime($strDate));
+        $strDay= date("j",strtotime($strDate));
+        // $strHour= date("H",strtotime($strDate));
+        // $strMinute= date("i",strtotime($strDate));
+        // $strSeconds= date("s",strtotime($strDate));
+        $strMonthFull = Array("","มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน","กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
+        $strMonthCut = Array("","ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค.");
+        $strMonthThai=$strMonthFull[$strMonth];
+        return "$strDay $strMonthThai $strYear";
+    }
+
 }
+
+
+

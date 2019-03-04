@@ -9,9 +9,13 @@ class StoreModel extends Model
     public $incrementing = true;
 
     protected $table = 'stores';
+
+    protected $primaryKey = 'store_id';
+
     
     protected $fillable = [
         'store_id',
+        'id_fk',
         'store_name',
         'store_tel',
         'store_tetetex',
