@@ -109,5 +109,6 @@
     <button type="submit" class="btn btn-xs btn-danger">Delete</button>
 </form> --}}
 
+{{-- @include('layouts.footer') --}}
 
 @endsection
