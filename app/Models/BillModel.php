@@ -10,7 +10,6 @@ class BillModel extends Model
 
     protected $primaryKey = 'bill_id';
 
-
     protected $table = 'bills';
     
     protected $fillable = [

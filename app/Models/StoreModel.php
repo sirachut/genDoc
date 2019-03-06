@@ -12,7 +12,6 @@ class StoreModel extends Model
 
     protected $primaryKey = 'store_id';
 
-    
     protected $fillable = [
         'store_id',
         'id_fk',

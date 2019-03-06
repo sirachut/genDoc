@@ -23,6 +23,8 @@ class ProjectModel extends Model
         'project_getday',
         'project_number',
         'project_status',
+        'project_orderNumber',
+        'project_typemoney',
         'created_at',
         'updated_at'
     ];
