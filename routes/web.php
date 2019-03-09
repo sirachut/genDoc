@@ -20,6 +20,8 @@ Auth::routes();
 // Route::get('documents/home', 'DocumentController@index')->name('home');
 
 Route::resource('/home','DocumentController');
+Route::get('home/create/store', 'DocumentController@storeStores');
+
 
 
 

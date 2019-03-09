@@ -12,10 +12,10 @@
     <div>
 
         <div class="row">
-            <h2>เอกสารการสั่งซื้อโรงเรียนบ้านเทอดไทย</h2>
-
-            
-            <button type="button" class="btn btn-outline-success">Success</button>
+            <h2>เอกสารการสั่งซื้อโรงเรียนบ้านเทอดไทย &nbsp;</h2>
+            <div class="pull-right">
+                <a class="btn btn-success" href="{{ route('home.create') }}"><i class="fas fa-plus-circle"> &nbsp; </i>เพิ่มเอกสาร</a>
+            </div>
         </div>
         
         <!-- Nav tabs -->

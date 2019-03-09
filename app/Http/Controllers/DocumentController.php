@@ -43,9 +43,9 @@ class DocumentController extends Controller
             ->where('id_fk', $user->id);
             
         return view('documents.home')
-            ->with('project_n_Q', $Project_n_Queries)
-            ->with('project_d_Q', $Project_d_Queries)
-            ->with('store_Q', $StoreQueries);
+            ->with(['project_n_Q' => $Project_n_Queries])
+            ->with(['project_d_Q' => $Project_d_Queries])
+            ->with(['store_Q' => $StoreQueries]);
         
         // $queries = DB::table('projects')
         //     ->join('users','projects.id_fk', '=' ,'users.id')
@@ -81,7 +81,7 @@ class DocumentController extends Controller
      */
     public function create()
     {
-        //
+        return view('documents.create');
     }
 
     /**
@@ -90,9 +90,50 @@ class DocumentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function storeStores(StoreRequest $storeRequest)
+    {
+        $storeRequest->validate([
+            'store_id_fk' => 'required',
+            'store_name' => 'required',
+            'store_tel' => 'required',
+            'store_teletex',
+            'store_address' => 'required',
+            'store_employee',
+            'store_employeeNumber',
+            'bank_branch',
+            'bank_number',
+            'bank_account',
+            'bank_name',
+        ]);
+
+        StoreModel::create($storeRequest->all());
+
+        return redirect()->route('home.index')
+            ->with('success','Created seccessfully');
+
+    }
+    
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'id_fk' => 'required',
+            'store_fk' => 'required',
+            'bill_number',
+            'project_department',
+            'project_name',
+            'project_subject',
+            'project_number',
+            'project_status',
+            'project_orderNumber',
+            'project_typemoney',
+            'created_at',
+            'updated_at',
+        ]);
+
+        ProjectModel::create($request->all());
+
+        return redirect()->route('home.index')
+            ->with('success','Created seccessfully');
     }
 
     /**
@@ -107,7 +148,6 @@ class DocumentController extends Controller
         ->where('projects.project_id',$project_id)
         ->join('users','projects.id_fk', '=' ,'users.id')
         ->join('stores','projects.store_fk', '=' , 'stores.store_id')
-        ->join('bills','projects.bill_fk', '=', 'bills.bill_id')
         ->select(
             'projects.*', 
             'users.name',
@@ -121,8 +161,7 @@ class DocumentController extends Controller
             'stores.bank_number',
             'stores.bank_account',
             'stores.bank_name',
-            'bills.bill_number',
-        )
+        )   
         ->first();
 
         $products = ProductModel::all()

@@ -21,15 +21,11 @@
         position: -webkit-sticky;
         position: sticky;
         top: 20px;
-        
-        
     }
     .topleft {
-        /* position: absolute; */
         float: left;
         top: 8px;
         left: 16px;
-        
     }
 </style>
 <div class="container">
@@ -37,9 +33,6 @@
 
         <div class="row">
             <h2>เอกสารการสั่งซื้อโรงเรียนบ้านเทอดไทย</h2>
-
-            
-            <button type="button" class="btn btn-outline-success">Success</button>
         </div>
 
         <br>

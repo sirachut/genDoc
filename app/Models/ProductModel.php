@@ -15,7 +15,7 @@ class ProductModel extends Model
         'product_unitname',
         'product_amount',
         'product_price',
-        'product_sumprice',
+        'product_pricesum',
         'created_at',
         'updated_at'
     ];

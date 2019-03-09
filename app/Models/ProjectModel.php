@@ -16,7 +16,7 @@ class ProjectModel extends Model
         'project_id',
         'id_fk',
         'store_fk',
-        'bill_fk',
+        'bill_number',
         'project_department',
         'project_name',
         'project_subject',
