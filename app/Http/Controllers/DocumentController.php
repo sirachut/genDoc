@@ -81,7 +81,20 @@ class DocumentController extends Controller
      */
     public function create()
     {
-        return view('documents.create');
+
+        $queries = DB::table('stores')
+            ->select(
+                'stores.*', 
+            )   
+            ->get();;
+
+        $user = Auth::user();
+
+        // $StoreQueries = StoreModel::all()
+        //     ->where('id_fk', $user->id);
+
+        return view('documents.create')
+            ->with(['create_Q'=> $queries]);
     }
 
     /**
@@ -108,8 +121,7 @@ class DocumentController extends Controller
 
         StoreModel::create($storeRequest->all());
 
-        return redirect()->route('home.index')
-            ->with('success','Created seccessfully');
+        return redirect('documents.store');
 
     }
     
