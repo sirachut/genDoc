@@ -17,10 +17,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
-// Route::get('documents/home', 'DocumentController@index')->name('home');
+Route::resources([
+    '/home' => 'DocumentController',
+    '/createstore' => 'StoreController'
+]);
 
-Route::resource('/home','DocumentController');
-Route::get('home/create/store', 'DocumentController@storeStores');
 
 
 

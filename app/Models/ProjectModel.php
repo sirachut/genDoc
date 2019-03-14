@@ -21,10 +21,16 @@ class ProjectModel extends Model
         'project_name',
         'project_subject',
         'project_getday',
+        'project_dateget',
         'project_number',
         'project_status',
         'project_orderNumber',
         'project_typemoney',
+        'teacher_get_name',
+        'teacher_rank',
+        'parcel_name',
+        'parcelLeader_name',
+        'manageschool_name',
         'created_at',
         'updated_at'
     ];

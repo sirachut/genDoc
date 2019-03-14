@@ -7,10 +7,10 @@
 </style>
 
 
-
 <div class="container">
     <div>
 
+            
         <div class="row">
             <h2>เอกสารการสั่งซื้อโรงเรียนบ้านเทอดไทย &nbsp;</h2>
             <div class="pull-right">
@@ -82,17 +82,17 @@
             </div>
 
             <div id="menu2" class="container tab-pane fade"><br>
-                <h3>Menu 2</h3>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                {{ formatDateThai( date("Y-m-d H:i:s")) }}
             </div>
 
         </div>
     </div>
+
     @if ($message = Session::get('success'))
-    <div class="alert alert-success">
-        <p>{{ $message }}</p>
-    </div>
-@endif
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>  
+    @endif  
 </div>
 
 {{-- <form class="form-horizontal" method="POST" action="{{ route('documents.destroy',$value->DOCUMENT_ID) }}">

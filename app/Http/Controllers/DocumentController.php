@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -94,7 +96,8 @@ class DocumentController extends Controller
         //     ->where('id_fk', $user->id);
 
         return view('documents.create')
-            ->with(['create_Q'=> $queries]);
+            ->with(['create_Q'=> $queries])
+            ->with(['user' => $user]);
     }
 
     /**
@@ -103,27 +106,7 @@ class DocumentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function storeStores(StoreRequest $storeRequest)
-    {
-        $storeRequest->validate([
-            'store_id_fk' => 'required',
-            'store_name' => 'required',
-            'store_tel' => 'required',
-            'store_teletex',
-            'store_address' => 'required',
-            'store_employee',
-            'store_employeeNumber',
-            'bank_branch',
-            'bank_number',
-            'bank_account',
-            'bank_name',
-        ]);
-
-        StoreModel::create($storeRequest->all());
-
-        return redirect('documents.store');
-
-    }
+   
     
     public function store(Request $request)
     {
@@ -134,18 +117,26 @@ class DocumentController extends Controller
             'project_department',
             'project_name',
             'project_subject',
+            'project_getday',
+            'project_dateget',
             'project_number',
             'project_status',
             'project_orderNumber',
             'project_typemoney',
+            'teacher_get_name',
+            'teacher_rank',
+            'parcel_name',
+            'parcelLeader_name',
+            'manageschool_name',
             'created_at',
             'updated_at',
         ]);
 
+
         ProjectModel::create($request->all());
 
         return redirect()->route('home.index')
-            ->with('success','Created seccessfully');
+            ->with('success','Created successfully');
     }
 
     /**
