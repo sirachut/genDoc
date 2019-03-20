@@ -12,3 +12,4 @@
         $strMonthThai=$strMonthCut[$strMonth];
         return "$strDay $strMonthThai $strYear $strHour:$strMinute";
     }
+    

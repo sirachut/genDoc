@@ -19,7 +19,8 @@ Auth::routes();
 
 Route::resources([
     '/home' => 'DocumentController',
-    '/createstore' => 'StoreController'
+    '/createstore' => 'StoreController',
+    
 ]);
 
 

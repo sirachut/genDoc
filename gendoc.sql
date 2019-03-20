@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 06, 2019 at 07:27 AM
+-- Generation Time: Mar 20, 2019 at 04:49 AM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.3.0
 
@@ -108,7 +108,8 @@ INSERT INTO `products` (`product_name`, `product_unitname`, `product_amount`, `p
 ('หนังสือ', 'เล่ม', 1, 299.00, 299.00, 1, NULL, NULL),
 ('กระเป๋าเครื่องเขียน', 'ใบ', 1, 29.00, 29.00, 1, NULL, NULL),
 ('ขนมขบเคี้ยว', 'ถัง', 1, 99.00, 99.00, 3, NULL, NULL),
-('เครื่องปริ้น PIXMA G1010', 'เครื่อง', 1, 3290.25, 3290.25, 4, NULL, NULL);
+('เครื่องปริ้น PIXMA G1010', 'เครื่อง', 1, 3290.25, 3290.25, 4, NULL, NULL),
+('test', 'test', 1, 20.00, 20.00, 7, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -118,17 +119,24 @@ INSERT INTO `products` (`product_name`, `product_unitname`, `product_amount`, `p
 
 CREATE TABLE `projects` (
   `project_id` int(11) NOT NULL,
-  `id_fk` int(11) NOT NULL,
-  `store_fk` int(11) NOT NULL,
-  `bill_fk` int(11) NOT NULL,
-  `project_department` varchar(255) NOT NULL,
-  `project_name` varchar(255) NOT NULL,
-  `project_subject` varchar(255) NOT NULL,
-  `project_getday` int(11) NOT NULL,
-  `project_number` varchar(255) NOT NULL,
-  `project_status` varchar(11) NOT NULL,
-  `project_orderNumber` varchar(255) NOT NULL,
-  `project_typemoney` varchar(255) NOT NULL,
+  `id_fk` int(11) DEFAULT NULL,
+  `store_fk` int(11) DEFAULT NULL,
+  `bill_number` varchar(255) NOT NULL,
+  `project_department` varchar(255) DEFAULT NULL,
+  `project_name` varchar(255) DEFAULT NULL,
+  `project_subject` varchar(255) DEFAULT NULL,
+  `project_getday` int(11) DEFAULT NULL,
+  `project_number` varchar(255) DEFAULT NULL,
+  `project_status` varchar(11) DEFAULT NULL,
+  `project_orderNumber` varchar(255) DEFAULT NULL,
+  `project_typemoney` varchar(255) DEFAULT NULL,
+  `project_datein` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `project_dateget` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `teacher_get_name` varchar(255) NOT NULL,
+  `teacher_rank` varchar(255) NOT NULL,
+  `parcel_name` varchar(255) NOT NULL,
+  `parcelLeader_name` varchar(255) NOT NULL,
+  `manageschool_name` varchar(255) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -137,10 +145,12 @@ CREATE TABLE `projects` (
 -- Dumping data for table `projects`
 --
 
-INSERT INTO `projects` (`project_id`, `id_fk`, `store_fk`, `bill_fk`, `project_department`, `project_name`, `project_subject`, `project_getday`, `project_number`, `project_status`, `project_orderNumber`, `project_typemoney`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 1, 'วิชาการ', 'ProjectDay 2019', 'ภาษาไทย', 3, '01/2562', 'n', '', '', '2019-03-03 11:09:11', NULL),
-(3, 1, 2, 3, 'แผนกอะไรขักอย่างนี่แหละ', 'งานซื้อเครื่องเขียนของร้านศิรชัช', 'ศิลปะ', 3, '03/2562', 'd', '', '', '2019-03-03 11:09:16', NULL),
-(4, 2, 2, 4, 'เทคโนโลยีสารสนเทศและการสื่อสาร', 'งานหัตถกรรมเทคโนโลสีสานสนเทศ', 'วิทยาศาสตร์', 7, '04/2562', 'n', '', '', '2019-03-03 11:09:18', NULL);
+INSERT INTO `projects` (`project_id`, `id_fk`, `store_fk`, `bill_number`, `project_department`, `project_name`, `project_subject`, `project_getday`, `project_number`, `project_status`, `project_orderNumber`, `project_typemoney`, `project_datein`, `project_dateget`, `teacher_get_name`, `teacher_rank`, `parcel_name`, `parcelLeader_name`, `manageschool_name`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '01', 'วิชาการ', 'ProjectDay 2019', 'ภาษาไทย', 3, '01/2562', 'n', 'ไม่ใช้', '(ยังไม่ได้ระบุ)', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '2019-03-03 11:09:11', NULL),
+(3, 1, 2, '02', 'แผนกอะไรขักอย่างนี่แหละ', 'งานซื้อเครื่องเขียนของร้านศิรชัช', 'ศิลปะ', 3, '03/2562', 'n', 'ไม่ใช่', '(ยังไม่ได้ระบุ)', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '2019-03-03 11:09:16', NULL),
+(5, 1, 2, 'ยังไม่ได้ระบุ', 'asdas', 'asd', 'sdsdf', 3, 'q', 'n', '(ยังไม่ได้ระบุ)', 'sdfsdf', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '2019-03-19 09:56:01', '2019-03-19 09:56:01'),
+(6, 1, 1, 'ยังไม่ได้ระบุ', 'asd', 'sd', 'sdasd', 3, '(ยังไม่ได้ระบุ)', 'n', '(ยังไม่ได้ระบุ)', 'asd', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '2019-03-19 09:57:01', '2019-03-19 09:57:01'),
+(7, 1, 1, 'ยังไม่ได้ระบุ', 'asd', 'asd', 'asd', 3, '(ยังไม่ได้ระบุ)', 'n', '(ยังไม่ได้ระบุ)', 'asdasdas', '0000-00-00 00:00:00', '0000-00-00 00:00:00', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '2019-03-19 09:58:24', '2019-03-19 09:58:24');
 
 -- --------------------------------------------------------
 
@@ -150,17 +160,17 @@ INSERT INTO `projects` (`project_id`, `id_fk`, `store_fk`, `bill_fk`, `project_d
 
 CREATE TABLE `stores` (
   `store_id` int(11) NOT NULL,
-  `id_fk` int(11) NOT NULL,
-  `store_name` varchar(255) NOT NULL,
-  `store_tel` varchar(255) NOT NULL,
-  `store_teletex` varchar(255) NOT NULL,
-  `store_address` varchar(255) NOT NULL,
-  `store_employee` varchar(255) NOT NULL,
-  `store_employeeNumber` varchar(255) NOT NULL,
-  `bank_branch` varchar(255) NOT NULL,
-  `bank_number` varchar(255) NOT NULL,
-  `bank_account` varchar(255) NOT NULL,
-  `bank_name` varchar(255) NOT NULL,
+  `store_id_fk` int(11) DEFAULT NULL,
+  `store_name` varchar(255) DEFAULT NULL,
+  `store_tel` varchar(255) DEFAULT NULL,
+  `store_teletex` varchar(255) DEFAULT NULL,
+  `store_address` varchar(255) DEFAULT NULL,
+  `store_employee` varchar(255) DEFAULT NULL,
+  `store_employeeNumber` varchar(255) DEFAULT NULL,
+  `bank_branch` varchar(255) DEFAULT NULL,
+  `bank_number` varchar(255) DEFAULT NULL,
+  `bank_account` varchar(255) DEFAULT NULL,
+  `bank_name` varchar(255) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -169,9 +179,11 @@ CREATE TABLE `stores` (
 -- Dumping data for table `stores`
 --
 
-INSERT INTO `stores` (`store_id`, `id_fk`, `store_name`, `store_tel`, `store_teletex`, `store_address`, `store_employee`, `store_employeeNumber`, `bank_branch`, `bank_number`, `bank_account`, `bank_name`, `created_at`, `updated_at`) VALUES
+INSERT INTO `stores` (`store_id`, `store_id_fk`, `store_name`, `store_tel`, `store_teletex`, `store_address`, `store_employee`, `store_employeeNumber`, `bank_branch`, `bank_number`, `bank_account`, `bank_name`, `created_at`, `updated_at`) VALUES
 (1, 1, 'สหเครื่องเขียน', '0801258841', '-', '130 หมู่ 11 ต.เจดีย์หลวง อ.แม่สรวย จ.เชียงราย 57180', 'นายศิรชัช มีใจดี', '1571000086015', 'พะเยา', '9836737650', 'นายศิรชัช มีใจดี', 'กรุงไทย', NULL, NULL),
-(2, 1, 'ศิรชัชเครื่องเขียน', '0801258841', '-', '111 หมู่ 12', 'นายศิรชัช มีใจดี', '1571000086015', 'พะเยา', '9836737650', 'นายศิรชัช มีใจดี', 'กรุงไทย', NULL, NULL);
+(2, 1, 'ศิรชัชเครื่องเขียน', '0801258841', '-', '111 หมู่ 12', 'นายศิรชัช มีใจดี', '1571000086015', 'พะเยา', '9836737650', 'นายศิรชัช มีใจดี', 'กรุงไทย', NULL, NULL),
+(12, 1, 'asdasd', 'asd', '-', 'asdasdad', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '2019-03-19 02:23:53', '2019-03-19 02:23:53'),
+(13, 1, 'asd', 'asd', 'asdasd', 'asd', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '(ยังไม่ได้ระบุ)', '2019-03-19 09:29:17', '2019-03-19 09:29:17');
 
 -- --------------------------------------------------------
 
@@ -195,8 +207,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'sirachut', 'sirachutg@gmail.com', NULL, '$2y$10$Fe09ZZFNj/srub1fxhVW7OtK7qPbD/1eV0I/yZB5s.RcArPGUMTs6', 'HtOVwjQh2KrIoFferO8a9z8f0VVBMGRjcWEx7GPNL5hw7CNDXq6tkOIDxZFZ', '2019-02-14 05:12:12', '2019-02-14 05:12:12'),
-(2, 'admin', 'admin@gendoc.com', NULL, '$2y$10$xSbtwVN5ZuXJVUX5S7JaKOaSKBM4HctHXRpaldGm3LTzxMhDay5jy', '6sITyGCBAdM2m5KKg0ZTXq55xuRFolqgpoCn40sCno48cpTjIOVVBA8osGb7', '2019-02-20 02:29:38', '2019-02-20 02:29:38');
+(1, 'sirachut', 'sirachutg@gmail.com', NULL, '$2y$10$Fe09ZZFNj/srub1fxhVW7OtK7qPbD/1eV0I/yZB5s.RcArPGUMTs6', 'H151Zkwiu79HtU9zF2CsnEPN2zFp6ljFwlkt5VveX2SZ9bVcP5cbuaBu201U', '2019-02-14 05:12:12', '2019-02-14 05:12:12'),
+(2, 'admin', 'admin@gendoc.com', NULL, '$2y$10$xSbtwVN5ZuXJVUX5S7JaKOaSKBM4HctHXRpaldGm3LTzxMhDay5jy', 'dzCauwsFkuGmnvp832MGgWfvVpoSF64IA87GpwsfrsN0fW0XF3AD5xlV88db', '2019-02-20 02:29:38', '2019-02-20 02:29:38'),
+(3, 'wolftime', 'wolftime@gmail.com', NULL, '$2y$10$VJxvbDsa2W6eHZRMg6ZoB.THkWgDE22h4eQVMkbQ9ZlrkI8C6uHcW', 'VNWwkwJIEr6tOOSjNsZWHJLtSPAF4I863xbNVIEEZoNEduqZSNTi6VHxHU2n', '2019-03-08 23:25:34', '2019-03-08 23:25:34');
 
 -- --------------------------------------------------------
 
@@ -205,33 +218,6 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 -- (See below for the actual view)
 --
 CREATE TABLE `view_bills` (
-`project_id` int(11)
-,`project_department` varchar(255)
-,`project_name` varchar(255)
-,`project_subject` varchar(255)
-,`project_number` varchar(255)
-,`id_fk` int(11)
-,`name` varchar(255)
-,`store_fk` int(11)
-,`store_name` varchar(255)
-,`store_tel` varchar(255)
-,`store_address` varchar(255)
-,`store_teletex` varchar(255)
-,`store_employee` varchar(255)
-,`store_employeeNumber` varchar(255)
-,`bank_branch` varchar(255)
-,`bank_number` varchar(255)
-,`bank_account` varchar(255)
-,`bank_name` varchar(255)
-,`bill_fk` int(11)
-,`bill_number` varchar(255)
-,`created_at` timestamp
-,`updated_at` timestamp
-,`product_name` varchar(255)
-,`product_unitname` varchar(255)
-,`product_amount` int(11)
-,`product_price` double(30,2)
-,`product_pricesum` double(30,2)
 );
 
 -- --------------------------------------------------------
@@ -241,27 +227,6 @@ CREATE TABLE `view_bills` (
 -- (See below for the actual view)
 --
 CREATE TABLE `view_documents` (
-`project_id` int(11)
-,`project_department` varchar(255)
-,`project_name` varchar(255)
-,`project_subject` varchar(255)
-,`project_getday` int(11)
-,`project_number` varchar(255)
-,`project_status` varchar(11)
-,`created_at` timestamp
-,`updated_at` timestamp
-,`name` varchar(255)
-,`store_name` varchar(255)
-,`store_tel` varchar(255)
-,`store_teletex` varchar(255)
-,`store_address` varchar(255)
-,`store_employee` varchar(255)
-,`store_employeeNumber` varchar(255)
-,`bank_branch` varchar(255)
-,`bank_number` varchar(255)
-,`bank_account` varchar(255)
-,`bank_name` varchar(255)
-,`bill_number` varchar(255)
 );
 
 -- --------------------------------------------------------
@@ -271,16 +236,6 @@ CREATE TABLE `view_documents` (
 -- (See below for the actual view)
 --
 CREATE TABLE `view_products` (
-`project_id` int(11)
-,`project_name` varchar(255)
-,`bill_number` varchar(255)
-,`created_at` timestamp
-,`updated_at` timestamp
-,`product_name` varchar(255)
-,`product_unitname` varchar(255)
-,`product_amount` int(11)
-,`product_price` double(30,2)
-,`product_pricesum` double(30,2)
 );
 
 -- --------------------------------------------------------
@@ -344,15 +299,14 @@ ALTER TABLE `products`
 ALTER TABLE `projects`
   ADD PRIMARY KEY (`project_id`),
   ADD KEY `id_fk` (`id_fk`),
-  ADD KEY `store_fk` (`store_fk`),
-  ADD KEY `bill_fk` (`bill_fk`);
+  ADD KEY `store_fk` (`store_fk`);
 
 --
 -- Indexes for table `stores`
 --
 ALTER TABLE `stores`
   ADD PRIMARY KEY (`store_id`),
-  ADD KEY `id_fk` (`id_fk`);
+  ADD KEY `id_fk` (`store_id_fk`);
 
 --
 -- Indexes for table `users`
@@ -381,19 +335,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `project_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `project_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `stores`
 --
 ALTER TABLE `stores`
-  MODIFY `store_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `store_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

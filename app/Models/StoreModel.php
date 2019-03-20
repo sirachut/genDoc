@@ -14,10 +14,10 @@ class StoreModel extends Model
 
     protected $fillable = [
         'store_id',
-        'id_fk',
+        'store_id_fk',
         'store_name',
         'store_tel',
-        'store_tetetex',
+        'store_teletex',
         'store_address',
         'store_employee',
         'store_employeeNumber',

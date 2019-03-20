@@ -79,8 +79,8 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="created_at">{{ __('วันเดือนปี ที่จัดซื้อ') }}</label>
-                                <input type="date" class="form-control" name="created_at" required>
-                                {{-- <input class="form-control" name="created_at" data-toggle="datepicker"> --}}
+                                <input  type="datetime" class="form-control" data-toggle="datepicker" name="project_datein" autocomplete="off">
+                                
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="project_number">{{ __('เลขที่จัดซื้อ') }}</label>
@@ -116,11 +116,9 @@
                             <div class="form-group col-md-4">
                                 <label for="store_fk">{{ __('กรุณาเลือกร้านค้า') }}</label>
                                 <select class="form-control" id="store_fk" name="store_fk" required>
-                                    
+                                        <option selected disabled>กรุณาเลือกร้านค้า</option>
                                     @foreach ($create_Q as $item) 
-                                        <option value="{{ $item->store_id }}">{{ $item->store_name }}
-                                                
-                                        </option>
+                                        <option value="{{ $item->store_id }}">{{ $item->store_name }}</option>
                                     @endforeach
                             
                                 </select>
@@ -128,80 +126,89 @@
                             </div>
                             <div class="form-group col-md-2">
                                 <label for="project_typemoney">{{ __('เพิ่มร้านค้า') }}</label>
-                                @include('documents.store')
-                                
-                                {{-- <a href="/createstore"><button type="button">GOTO STORE CREATE</button></a> --}}
+                                <!-- Button to Open the Modal -->
+                            <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#myModal">
+                                เพิ่มรายการร้านค้า
+                            </button>    
+                               
                             </div>
-
-                             {{-- <select name="" onchange="myFunction(event)">
-                            <option disabled selected>Choose Database Type</option>
-                            <option value="Green">green</option>
-                            <option value="Red">red</option>
-                            <option value="Orange">orange</option>
-                            <option value="Black">black</option>
-                            </select>
-
-                            <script>
-                                function myFunction(e) {
-                                    document.getElementById("myText").value = e.target.value
-                                }
-                            </script>
-
-                            <input id="myText" type="text" value="colors"> --}}
-
 
                             {{-- Hidden --}}
                             <div class="form-group col-md-12">
                                 <input type="text" id="id_fk" class="form-control" name="id_fk" value="{{ $user->id }}" hidden>
                                 <input type="text" id="bill_number" class="form-control" name="bill_number" value="ยังไม่ได้ระบุ" hidden>
                                 <input type="text" id="project_status" class="form-control" name="project_status" value="n" hidden>
-                                {{-- <input type="datetime" class="form-control" data-toggle="datepicker2" name="project_dateget" value="0000-00-00 00:00:00" > --}}
-                                <input type="date" name="project_dateget" value="0000-00-00 00:00:00" hidden>
+                                <input type="datetime" class="form-control" data-toggle="datepicker2" name="project_dateget" >
+                                {{-- <input type="date" name="project_dateget" value="0000-00-00 00:00:00" hidden> --}}
 
                             </div>
 
 
                         </div>
-                        <br>
-                        <h5 style="color:blueviolet">ข้อมูลบุคลากร</h3><hr>
-                        <div class="form row"> 
-                            <div class="form-group col-md-4">
-                                <label for="teacher_get_name">{{ __('ผู้ตรวจรับ') }}</label>
-                                <input type="text" id="teacher_get_name" class="form-control" name="teacher_get_name" value="(ยังไม่ได้ระบุ)">
-            
-                            </div>
-                            <div class="form-group col-md-2">
-                                <label for="teacher_rank">{{ __('ตำแหน่ง') }}</label>
-                                <input type="text" id="teacher_rank" class="form-control" name="teacher_rank" value="(ยังไม่ได้ระบุ)">
-            
-                            </div>
-                        </div>
-
                         <div class="form row">
-                            <div class="form-group col-md-4">
-                                <label for="parcel_name">{{ __('เจ้าหน้าที่พัสดุ') }}</label>
-                                <input type="text" id="parcel_name" class="form-control" name="parcel_name" value="(ยังไม่ได้ระบุ)">
-            
-                            </div>
-                            <div class="form-group col-md-4">
-                                <label for="parcelLeader_name">{{ __('หัวหน้าเจ้าหน้าที่พัสดุ') }}</label>
-                                <input type="text" id="parcelLeader_name" class="form-control" name="parcelLeader_name" value="(ยังไม่ได้ระบุ)">
-            
-                            </div>
-                        </div>
 
-                        <div class="form row">
-                            <div class="form-group col-md-4">
-                                <label for="manageschool_name">{{ __('ผู้อำนวยการโรงเรียน') }}</label>
-                                <input type="text" id="manageschool_name" class="form-control" name="manageschool_name" value="(ยังไม่ได้ระบุ)">
-            
+                            <div class="form-group col-md-12">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_document" aria-expanded="false" aria-controls="collapseExample">
+                                        เพิ่มข้อมูลบุคลากร
+                                </button>
+                                <small class="form-text text-muted">หมายเหตุ : หากไม่ได้เพิ่มข้อมูลบุคลากร ข้อมูลดังกล่าวจะถูกตั้งเป็น ค่าพื้นฐาน (Default) ที่ตั้งค่าโดย Admin</small>
+        
+                                
                             </div>
-                        </div>
-
                         
-                    
+                    </div>
+        
+                    <div class="collapse" id="collapse_document">
                        
+
+                        <div class="form row"> 
+                                <div class="form-group col-md-4">
+                                    <label for="teacher_get_name">{{ __('ผู้ตรวจรับ') }}</label>
+                                    <input type="text" id="teacher_get_name" class="form-control" name="teacher_get_name" value="(ยังไม่ได้ระบุ)">
+                
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="teacher_rank">{{ __('ตำแหน่ง') }}</label>
+                                    <input type="text" id="teacher_rank" class="form-control" name="teacher_rank" value="(ยังไม่ได้ระบุ)">
+                
+                                </div>
+                            </div>
+
+                            <div class="form row">
+                                    <div class="form-group col-md-4">
+                                        <label for="parcel_name">{{ __('เจ้าหน้าที่พัสดุ') }}</label>
+                                        <input type="text" id="parcel_name" class="form-control" name="parcel_name" value="(ยังไม่ได้ระบุ)">
+                    
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="parcelLeader_name">{{ __('หัวหน้าเจ้าหน้าที่พัสดุ') }}</label>
+                                        <input type="text" id="parcelLeader_name" class="form-control" name="parcelLeader_name" value="(ยังไม่ได้ระบุ)">
+                    
+                                    </div>
+                                </div>
+        
+                                <div class="form row">
+                                    <div class="form-group col-md-4">
+                                        <label for="manageschool_name">{{ __('ผู้อำนวยการโรงเรียน') }}</label>
+                                        <input type="text" id="manageschool_name" class="form-control" name="manageschool_name" value="(ยังไม่ได้ระบุ)">
+                    
+                                    </div>
+                                </div>
+
+                            
+        
                         
+                    </div>
+
+                       
+                        <div class="form row" style="float:right">
+
+                            <input type="reset" class="btn btn-dark" value="Reset">&nbsp;
+                            <button type="submit reset" class="btn btn-success">บันทึกข้อเอกสาร</button> 
+
+        
+                        </div>
+                       
 
                 </fieldset>
 
@@ -209,9 +216,136 @@
             </div>
         </div>
 
-    <button type="submit" class="btn btn-primary" style="float:right">บันทึกข้อเอกสาร</button>
 
     </form>
+
+    
+
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+        <div class="modal-header">
+            <h4 class="modal-title">เพิ่มร้านค้า</h4>
+                <small id="store_name" class="form-text text-muted"> &nbsp; &nbsp;{{ Auth::user()->name }}</small>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+           
+        </div>
+        
+        <!-- Modal body -->
+        <div class="modal-body">
+            <form action="{{ route('createstore.store') }}" method="POST">
+            @csrf
+
+            <div class="form-row">
+                
+                <div class="form-group col-md-8">
+                    <label for="store_name">{{ __('ห้างร้านบริษัทที่จัดซื้อ') }} </label>
+                    <textarea style="text" class="form-control" name="store_name" required></textarea>
+                    <small id="store_name" class="form-text text-muted">คำอธิบาย : ชื่อร้านค้าที่จัดซื้อ</small>
+
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="store_tel">{{ __('โทรศัพท์') }} </label>
+                    <input style="text" class="form-control" name="store_tel" autocomplete="off" required>
+                    <small id="store_tel" class="form-text text-muted">คำอธิบาย : เบอร์โทรร้านค้า</small>
+
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="store_teletex">{{ __('โทรสาร') }} </label>
+                    <input style="text" class="form-control" name="store_teletex" value="-">
+                    <small id="store_teletex" class="form-text text-muted">คำอธิบาย : เบอร์โทรสารร้านค้า</small>
+
+                </div>
+                <div class="form-group col-md-8">
+                    <label for="store_address">{{ __('ที่อยู่ห้างร้านบริษัทที่จัดซื้อ') }} </label>
+                    <textarea style="text" class="form-control" name="store_address" required></textarea>
+                    <small id="store_address" class="form-text text-muted">ตัวอย่าง : 130 หมู่ 11 ต.เจดีย์หลวง อ.แม่สรวย จ.เชียงราย 57180</small>
+
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="store_employeeNumber">{{ __('เลขประจำตัวผู้เสียภาษี') }} </label>
+                    <input style="text" class="form-control" name="store_employeeNumber" onfocus="this.value=''" value="(ยังไม่ได้ระบุ)" required autocomplete="off">
+                    <small id="store_employeeNumber" class="form-text text-muted">ตัวอย่าง : 05735420xxxx</small>
+
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="store_employee">{{ __('ผู้มีอำนาจลงนาม') }} </label>
+                    <input style="text" class="form-control" name="store_employee" onfocus="this.value=''" value="(ยังไม่ได้ระบุ)" required autocomplete="off">
+                    <small id="store_employee" class="form-text text-muted">คำอธิบาย : ผู้ลงนามร้านค้า</small>
+
+                </div>
+
+                {{-- hidden --}}
+                <input style="text" class="form-control" name="store_id_fk" value="{{ Auth::user()->id }}" hidden>
+
+               
+            </div>
+
+            <div class="form row">
+
+                    <div class="form-group col-md-12">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_store" aria-expanded="false" aria-controls="collapseExample">
+                                เพิ่มบัญชีธนาคาร
+                        </button>
+                        <small id="bank_number" class="form-text text-muted">หมายเหตุ : หากไม่ได้เพิ่มธนาคารของร้านค้า ชุดข้อมูลดังกล่าวจะถูกระบุไว้ว่า "ยังไม่ได้ระบุ"</small>
+
+                        
+                    </div>
+                
+            </div>
+
+            <div class="collapse" id="collapse_store">
+                <div class="form-row">
+
+                    <div class="form-group col-md-6">
+                        <label for="bank_number">{{ __('เลขที่บัญชีเงินฝากธนาคาร') }} </label>
+                        <input id="bank_number" style="text" class="form-control" name="bank_number" onfocus="this.value=''" autocomplete="off" onfocusout="myFunction()" value="(ยังไม่ได้ระบุ)" required>
+                        <small id="bank_number" class="form-text text-muted">ตัวอย่าง : 987673****</small>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="bank_account">{{ __('ชื่อบัญชี') }} </label>
+                        <input style="text" class="form-control" name="bank_account" onfocus="this.value=''" value="(ยังไม่ได้ระบุ)" required autocomplete="off">
+                        <small id="bank_account" class="form-text text-muted">คำอธิบาย : ชื่อบัญชีธนาคาร</small>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="bank_number">{{ __('ธนาคาร') }} </label>
+                        <input id="bank_name" style="text" class="form-control" name="bank_name" onfocus="this.value=''" value="(ยังไม่ได้ระบุ)" required autocomplete="off">
+                        <small id="bank_name" class="form-text text-muted">ตัวอย่าง : ชื่อธนาคารที่บัญชีสังกัดอยู่</small>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="bank_branch">{{ __('สาขา') }} </label>
+                        <input style="text" class="form-control" name="bank_branch" onfocus="this.value=''" value="(ยังไม่ได้ระบุ)" required autocomplete="off">
+                        <small id="bank_branch" class="form-text text-muted">คำอธิบาย : สาขาที่ธนาคารสังกัดอยู่</small>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        
+        <!-- Modal footer -->
+
+        <div class="modal-footer">
+            <input type="reset" class="btn btn-dark" value="Reset">
+            <button type="submit" class="btn btn-success">บันทึกข้อมูลร้านค้า</button>
+        </div>
+    </form>
+
+        
+      
+      </div>
+    </div>
+  </div>
+
+
+    
+      
+
+    
 
     
 
@@ -225,21 +359,28 @@
     <div style="padding-bottom: 500px">
 
     </div>
-
+   
 </div>
 <script>
+     
+
     $(document).ready(function() {
         $('[data-toggle="datepicker"]').datepicker({
             autoPick: true,
             language: 'th-TH',
-            format: 'dd/mm/yyyy',
+            // format: 'dd/mm/yyyy',
+            
+            
         });
+        
     });
     $(document).ready(function() {
         $('[data-toggle="datepicker2"]').datepicker({
             // autoPick: true,
             language: 'th-TH',
-            format: 'dd/mm/yyyy',
+            // format: 'dd-mm-yyyy',
+
+            
         });
     });
     

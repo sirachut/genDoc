@@ -6,6 +6,14 @@
 
         @include('layouts.style')
 
+        <style>
+            
+            .block-2 {
+               
+                float: right;
+            }
+        </style>
+
         <title>genDoc</title>
 
         <!-- Fonts -->
@@ -225,12 +233,127 @@
                     </div>
                     @endauth
                     @endif
+                    
+<div class="container">
+        <h2>Large Modal</h2>
+        <!-- Button to Open the Modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+          Open modal
+        </button>
+      
+        <!-- The Modal -->
+        <div class="modal fade" id="myModal">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+            
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <h4 class="modal-title">เพิ่มรายการเอกสาร</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+              </div>
+              
+              <!-- Modal body -->
+              <div class="modal-body">
+                <form action="#" method="POST" autocomplete="off" id="sent_control_code"  enctype="multipart/form-data">
+                    @csrf
+                    
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-row">
+                                <div class="col-sm-4">
+                                    <h4>ข้อมูลเอกสาร</h4>
+                                </div>
+                            </div>
+    
+                            <div class="form-row">
+                                <div class="form-group col-md-8">
+                                    <label for="DOCUMENT_NAME">ชื่อเอกสาร</label>
+                                    <textarea class="form-control"  name="DOCUMENT_NAME" rows="4"></textarea>
+                                    <small id="emailHelp" class="form-text text-muted">ตัวอย่าง : แมลงตัวนั้น ตัวนี้ มีเยอะมากมาย ใครๆ ก็ร๊ากๆๆ มันทุกตัว</small>
 
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="DOCUMENT_NUMBER">เลขที่หนังสือ</label>
+                                    <input style="text" class="form-control" name="DOCUMENT_NUMBER">
+                                    <small id="emailHelp" class="form-text text-muted">ตัวอย่าง : 080-000-0000</small>
+
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="DOCUMENT_ST_NUMBER">เลขที่ ศธ.</label>
+                                    <input style="text" class="form-control" name="DOCUMENT_ST_NUMBER">
+                                    <small id="emailHelp" class="form-text text-muted">ตัวอย่าง : ศธ.0000/0000</small>
+
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="FACULTY_DEPRATMENT">คณะ</label>
+                                    <select class="form-control" name="FACULTY_DEPRATMENT">
+                                        <option selected disabled>กรุณาเลือกคณะ ของเอกสาร</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option> 
+                                    </select>
+                                    <small id="emailHelp" class="form-text text-muted">ยังไมได้ดึงรายชื่อคณะมา</small>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="FACULTY_TEL">เบอร์โทรคณะ</label>
+                                    <input style="text" class="form-control" name="FACULTY_TEL">
+                                    <small id="emailHelp" class="form-text text-muted">ตัวอย่าง : 1234</small>
+
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="DOCUMENT_TO">ส่งไปถึง</label>
+                                    <select class="form-control" name="DOCUMENT_TO">
+                                        <option selected disabled>กรุณาเลือกผู้ที่จะส่ง</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option> 
+                                    </select>
+                                    <small id="emailHelp" class="form-text text-muted">ยังไมได้ดึงรายชื่อมา</small>
+                                    
+                                </div>
+                                <div class="form-group col-md-8">
+                                    <label for="DOCUMENT_NOTATION">หมายเหตุ</label>
+                                    <input style="text" class="form-control" name="DOCUMENT_NOTATION">
+                                    <small id="emailHelp" class="form-text text-muted">ตัวอย่าง : หมายเหตุ</small>
+
+                                </div>
+
+                            </div>
+                           
+                          
+                        </div>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="defaultCheck1" name="DOCUMENT_PRIORITY">
+                        <label class="form-check-label" for="defaultCheck1">
+                            เอกสารด่วน
+                        </label>
+                    </div>
+                  </form>
+              </div>
+              
+              <!-- Modal footer -->
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success">บันทึกข้อมูล</button>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+        
+      </div>
 
                 </div>
             </div>
         </div>
     </div>
+
+    
 
     @include('layouts.footer')
 
