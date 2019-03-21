@@ -221,7 +221,7 @@
                                         <div class="col-sm-2">เลขที่บัญชีเงินฝากธนาคาร</div>
                                         <div class="col-sm-2" style="color: red">{{ $show->bank_number }}</div>
                                         <div class="col-sm-2">ชื่อบัญชี</div>
-                                        <div class="col-sm-" style="color: red">{{ $show->bank_account }}</div>
+                                        <div class="col-sm-2" style="color: red">{{ $show->bank_account }}</div>
                                     </div>
                                 </li>  
                                 <li class="list-group-item">
@@ -374,7 +374,7 @@
                                     <div class="col-sm-5">{{ $show->project_number }}</div>
                                     <div class="col-sm">
                                         @php
-                                            echo App\Http\Controllers\DocumentController::DateThai($show->created_at);
+                                            echo App\Http\Controllers\DocumentController::DateThai($show->project_datein);
                                         @endphp
                                     </div>
                                 </div>
@@ -433,8 +433,8 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-1"></div>
-                                        <div class="col-sm-5" style="text-indent: 50px;">2.อนุมัติให้แต่งตั้ง (teacher_name)</div>
-                                        <div class="col-sm-6">ตำแหน่ง (teacher_rank) เป็นผู้ตรวจรับพัสดุ</div>
+                                        <div class="col-sm-5" style="text-indent: 50px;">2.อนุมัติให้แต่งตั้ง {{ $show->teacher_get_name }}</div>
+                                        <div class="col-sm-6">ตำแหน่ง {{ $show->teacher_rank }} เป็นผู้ตรวจรับพัสดุ</div>
                                     </div>
                                     <br>    <br>
                                     <div class="row">
@@ -442,7 +442,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-1"></div>
-                                        <div class="col-sm-4">((teacher_name))</div>
+                                        <div class="col-sm-4">{{ $show->parcel_name }}</div>
                                         <div class="col-sm-2"></div>
                                     </div>
 
@@ -453,7 +453,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-1"></div>
-                                        <div class="col-sm-4">((teacher_name))</div>
+                                        <div class="col-sm-4">{{ $show->parcelLeader_name }}</div>
                                         <div class="col-sm-2"></div>
                                     </div>
 
@@ -471,7 +471,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-8"></div>
-                                        <div class="col-sm  ">((principle_teacher)</div>
+                                        <div class="col-sm  ">{{ $show->manageschool_name }}</div>
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-8"></div>
@@ -479,9 +479,11 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-8"></div>
-                                        <div class="col-sm  "> @php
-                                            echo App\Http\Controllers\DocumentController::DateThai($show->created_at);
-                                        @endphp</div>
+                                        <div class="col-sm  "> 
+                                            @php
+                                                echo App\Http\Controllers\DocumentController::DateThai($show->project_datein);
+                                            @endphp
+                                        </div>
                                     </div>
                                     
 
@@ -497,14 +499,69 @@
                         <div class="col-sm sticky">
                                 <fieldset class="scheduler-border">
                                     <legend class="scheduler-border"><p style="font-size:18px">ข้อมูลในเอกสารนี้</p></legend>
-                                    <div class="form-group">
-                                        <label for="project_number">เลขที่จัดซื้อ</label>
-                                        <input class="form-control" type="text" value="{{ $show->project_number }}">
+
+                                    <div class="form-group">   
+                                        <label for="">
+                                            <small class="form-text text-muted">เลขที่จัดซื้อ</small>
+                                        </label>
+                                        <p class="form-control">{{ $show->project_number }}</p>
+                                        
                                     </div>
+
                                     <div class="form-group">
-                                        <label for="created_at">วันเดือนปี ที่จัดซื้อ</label>
-                                        <input class="form-control" type="text" value="{{ $show->created_at }}">
+                                        <label for="">
+                                                <small class="form-text text-muted">วันเดือนปี ทีจัดซื้อ</small>
+                                        </label>
+                                        <p class="form-control"> 
+                                            @php
+                                                echo App\Http\Controllers\DocumentController::DateThai($show->project_datein);
+                                            @endphp
+                                        </p>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label for="">
+                                                <small class="form-text text-muted">ชื่อกิจกรรม/โครงการ</small>
+                                        </label>
+                                        <p class="form-control">{{ $show->project_name }}</p>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="">
+                                                <small class="form-text text-muted">ผู้ตรวจรับ</small>
+                                        </label>
+                                        <p class="form-control">{{ $show->teacher_get_name }}</p>
+                                    </div>
+
+                                    <div class="form-group">
+                                            <label for="">
+                                                    <small class="form-text text-muted">ตำแหน่งผู้ตรวจรับเอกสาร</small>
+                                            </label>
+                                        <p class="form-control">{{ $show->teacher_rank }}</p>
+                                    </div>
+
+                                    <div class="form-group">
+                                            <label for="">
+                                                    <small class="form-text text-muted">เจ้าหน้าที่พัสดุ</small>
+                                            </label>
+                                        <p class="form-control">{{ $show->parcel_name }}</p>
+                                    </div>
+
+                                    <div class="form-group">
+                                            <label for="">
+                                                    <small class="form-text text-muted">หัวหน้าเจ้าหน้าที่พัสดุ</small>
+                                            </label>
+                                        <p class="form-control">{{ $show->parcelLeader_name }}</p>
+                                    </div>
+
+                                    <div class="form-group">
+                                            <label for="">
+                                                    <small class="form-text text-muted">ผู้อำนวยการโรงเรียน</small>
+                                            </label>
+                                        <p class="form-control">{{ $show->manageschool_name }}</p>
+                                    </div>
+
+                                    
                                     
                                     
                                 </fieldset>

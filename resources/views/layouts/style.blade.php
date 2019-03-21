@@ -19,8 +19,10 @@
 <script type='text/javascript' src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
 {{-- DATEPICKER --}}
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<link href="https://fengyuanchen.github.io/datepicker/css/datepicker.css" rel="stylesheet"/>
-<script src="https://fengyuanchen.github.io/datepicker/js/datepicker.js"></script>
-<script type='text/javascript' src="/dist/docs/js/datepicker.th-TH.js"></script>
+<link rel="stylesheet" href="/datepicker/css/bootstrap-datepicker.css">
+<script type='text/javascript' src="/datepicker/js/bootstrap-datepicker.js"></script>
+<script type='text/javascript' src="/datepicker/locales/bootstrap-datepicker.th.min.js"></script>
+
+
+
 

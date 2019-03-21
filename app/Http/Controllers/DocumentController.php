@@ -88,14 +88,21 @@ class DocumentController extends Controller
             ->select(
                 'stores.*', 
             )   
-            ->get();;
+            ->get();
 
         $user = Auth::user();
+
+        $director = DB::table('directors')
+            ->select(
+                'directors.*',
+            )
+            ->first();
 
         // $StoreQueries = StoreModel::all()
         //     ->where('id_fk', $user->id);
 
         return view('documents.create')
+            ->with(['director' => $director])
             ->with(['create_Q'=> $queries])
             ->with(['user' => $user]);
     }
