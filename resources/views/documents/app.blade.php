@@ -26,9 +26,26 @@
 <body >
     @include('layouts.navbar')
 
-        <main class="py-4">
+        <div>
             @yield('content')
-        </main>
+        </div>
     </div>
+
+    <style>
+        .footer{
+            background-color: #f5f5f5;
+            height: 60px;
+            line-height: 60px; /* Vertically center the text there */
+        }
+    </style>
+
+    
+    {{-- <footer class="footer">
+    <div class="container">
+        <span class="text-muted">Place sticky footer content here.</span>
+    </div> --}}
+    
+    
+      
 </body>
 </html>

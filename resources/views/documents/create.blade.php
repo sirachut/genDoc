@@ -28,11 +28,37 @@
         left: 16px;
     }
 </style>    
+
+<img style="background-size:cover;" width="100%" height="200px" src="{{ URL::to('/assets/img/bg1_create.jpg') }}">
+<div class="container">
+
+    <div class="centered">
+        
+        <h1>เพิ่มรายการเอกสาร</h1>
+        <small>เพิ่มข้อมูล งาน/โครงการ ของโรงเรียนบ้านเทอดไทย</small>
+
+    </div>
+
+<style>
+.centered {
+  position: absolute;
+  top: 22%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+}
+</style>
+
+</div>
+
+
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
             <div class="pull-left">
-                <h2>เพิ่มเอกสาร ฟอร์มสั่งซื้อ โรงเรียนบ้านเทอดไทย</h2>
+                <br>
+                <h4>ฟอร์มสั่งซื้อ โรงเรียนบ้านเทอดไทย</h4>
+                <small class="form-text text-muted">ฟอร์มกรอกข้อมูลประกอบไปด้วย ห้างร้านที่ติดต่อและรายละเอียดของงาน/โครงการเบื้องต้น</small>
+
                 <br>
             </div>
             {{-- <div class="pull-right">
@@ -55,13 +81,50 @@
     <form action="{{ route('home.store') }}" method="POST">
         @csrf
 
+        
+
         <div class="container" >
+            
             <div class="row">
               <div class="col-sm-12" >
                 <fieldset class="scheduler-border">
                     {{-- <legend class="scheduler-border" id="list-item-1"><h4>ข้อมูลของเอกสาร</h4></legend> --}}
                     
                     <br>
+                    <h5 style="color:blueviolet">ข้อมูลการตรวจรับ</h3><hr>
+                        <div class="form row">
+                            <div class="form-group col-md-4">
+                                <label for="store_fk">{{ __('กรุณาเลือกร้านค้า') }}<span style="color:red;">*</span></label>
+                                <select class="form-control" id="store_fk" name="store_fk" required>
+                                        <option selected disabled>กรุณาเลือกร้านค้า</option>
+                                    @foreach ($create_Q as $item) 
+                                        <option value="{{ $item->store_id }}">{{ $item->store_name }}</option>
+                                    @endforeach
+                            
+                                </select>
+                                    
+                            </div>
+                                <div class="form-group col-md-2">
+                                    <label for="project_typemoney">{{ __('เพิ่มร้านค้า') }}</label>
+                                    <!-- Button to Open the Modal -->
+                                <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#myModal">
+                                    เพิ่มรายการร้านค้า
+                                </button>    
+                                
+                                </div>
+
+                            {{-- Hidden --}}
+                            <div class="form-group col-md-12">
+                                <input type="text" id="id_fk" class="form-control" name="id_fk" value="{{ $user->id }}" hidden>
+                                <input type="text" id="bill_number" class="form-control" name="bill_number" value="ยังไม่ได้ระบุ" hidden>
+                                <input type="text" id="project_status" class="form-control" name="project_status" value="n" hidden>
+                                <input type="datetime" class="form-control" data-toggle="datepicker2" name="project_dateget" hidden >
+                                {{-- <input type="date" name="project_dateget" value="0000-00-00 00:00:00" hidden> --}}
+
+                            </div>
+
+
+                        </div>  
 
                     <h5 style="color:blueviolet">ข้อมูลพื้นฐาน</h3><hr>
                         <div class="form row">
@@ -137,40 +200,7 @@
                         </div>
                         <br>
 
-                        <h5 style="color:blueviolet">ข้อมูลการตรวจรับ</h3><hr>
-                        <div class="form row">
-                            <div class="form-group col-md-4">
-                                <label for="store_fk">{{ __('กรุณาเลือกร้านค้า') }}<span style="color:red;">*</span></label>
-                                <select class="form-control" id="store_fk" name="store_fk" required>
-                                        <option selected disabled>กรุณาเลือกร้านค้า</option>
-                                    @foreach ($create_Q as $item) 
-                                        <option value="{{ $item->store_id }}">{{ $item->store_name }}</option>
-                                    @endforeach
-                            
-                                </select>
-                                    
-                            </div>
-                            <div class="form-group col-md-2">
-                                <label for="project_typemoney">{{ __('เพิ่มร้านค้า') }}</label>
-                                <!-- Button to Open the Modal -->
-                            <button type="button" class="btn btn-primary form-control" data-toggle="modal" data-target="#myModal">
-                                เพิ่มรายการร้านค้า
-                            </button>    
-                               
-                            </div>
-
-                            {{-- Hidden --}}
-                            <div class="form-group col-md-12">
-                                <input type="text" id="id_fk" class="form-control" name="id_fk" value="{{ $user->id }}" hidden>
-                                <input type="text" id="bill_number" class="form-control" name="bill_number" value="ยังไม่ได้ระบุ" hidden>
-                                <input type="text" id="project_status" class="form-control" name="project_status" value="n" hidden>
-                                <input type="datetime" class="form-control" data-toggle="datepicker2" name="project_dateget" hidden >
-                                {{-- <input type="date" name="project_dateget" value="0000-00-00 00:00:00" hidden> --}}
-
-                            </div>
-
-
-                        </div>
+                        
                         <div class="form row">
 
                             <div class="form-group col-md-12">
@@ -250,7 +280,7 @@
 
   <!-- The Modal -->
   <div class="modal fade" id="myModal">
-    <div class="modal-dialog modal-lx">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
       
         <!-- Modal Header -->
@@ -366,6 +396,8 @@
                         <small id="bank_branch" class="form-text text-muted">คำอธิบาย : สาขาที่ธนาคารสังกัดอยู่</small>
                     </div>
 
+                    {{-- Hidden --}}
+                    <input style="text" class="form-control" name="status" value="s" hidden>
                 </div>
             </div>
 

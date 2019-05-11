@@ -17,6 +17,9 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ url('/home') }}">เอกสาร <span class="sr-only">(current)</span></a>
                     </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url('/storemanage') }}">จัดการร้านค้า <span class="sr-only">(current)</span></a>
+                    </li>
 
                     {{-- <li class="nav-item">
                         <a class="nav-link" disabled href="#">จัดการผู้ใช้</a>
@@ -63,6 +66,7 @@
                     @else
 
                         <li class="nav-item dropdown">
+                            
 
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                User: {{ Auth::user()->name }} <span class="caret"></span>
@@ -87,3 +91,6 @@
             </div>
         </div>
     </nav>
+
+
+    

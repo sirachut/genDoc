@@ -49,31 +49,7 @@ class DocumentController extends Controller
             ->with(['project_d_Q' => $Project_d_Queries])
             ->with(['store_Q' => $StoreQueries]);
         
-        // $queries = DB::table('projects')
-        //     ->join('users','projects.id_fk', '=' ,'users.id')
-        //     ->join('stores','projects.store_fk', '=' , 'stores.store_id')
-        //     ->join('bills','projects.bill_fk', '=', 'bills.bill_id')
-        //     ->where('projects.id_fk',$user->id)
-        //     ->select(
-        //         'projects.*', 
-        //         'users.name',
-        //         'stores.store_name',
-        //         'stores.store_tel',
-        //         'stores.store_teletex',
-        //         'stores.store_address',
-        //         'stores.store_employee',
-        //         'stores.store_employeeNumber',
-        //         'stores.bank_branch',
-        //         'stores.bank_number',
-        //         'stores.bank_account',
-        //         'stores.bank_name',
-        //         'bills.bill_number',
-        //     )
-        //     ->get();
-
-        // return view('documents.home')
-        //         ->with(['index' => $queries]);  
-
+        
         }
 
     /**
@@ -84,11 +60,8 @@ class DocumentController extends Controller
     public function create()
     {
 
-        $queries = DB::table('stores')
-            ->select(
-                'stores.*', 
-            )   
-            ->get();
+        $queries = StoreModel::all()
+           ->where('status','s');
 
         $user = Auth::user();
 
@@ -178,10 +151,9 @@ class DocumentController extends Controller
         $products = ProductModel::all()
             ->where('project_fk',$project_id);
 
-
         return view('documents.show')
-        ->with(['show' => $queries])
-        ->with(['product_Q' => $products]);   
+            ->with(['show' => $queries])
+            ->with(['product_Q' => $products]);
     }
 
     /**
@@ -190,9 +162,28 @@ class DocumentController extends Controller
      * @param  \App\Models\ProjectModel  $projectModel
      * @return \Illuminate\Http\Response
      */
-    public function edit(ProjectModel $projectModel)
+    public function edit($id)
     {
-        //
+        $queries = DB::table('stores')
+        
+            ->select(
+                'stores.*', 
+            )   
+            ->get();
+
+        $user = Auth::user();
+
+        $director = DB::table('directors')
+            ->select(
+                'directors.*',
+            )
+            ->first();
+            
+        $value = \App\Models\ProjectModel::find($id);
+        return view('documents.edit',compact('value','id'))
+            ->with(['director' => $director])
+            ->with(['create_Q'=> $queries])
+            ->with(['user' => $user]);
     }
 
     /**
@@ -202,9 +193,28 @@ class DocumentController extends Controller
      * @param  \App\Models\ProjectModel  $projectModel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProjectModel $projectModel)
+    public function update(Request $request, $id)
     {
-        //
+        $value = \App\Models\ProjectModel::find($id);
+        $value ->id_fk=$request->get('id_fk');
+        $value ->store_fk=$request->get('store_fk');
+        $value ->bill_number=$request->get('bill_number');
+        $value ->project_department=$request->get('project_department');
+        $value ->project_name=$request->get('project_name');
+        $value ->project_subject=$request->get('project_subject');
+        $value ->project_getday=$request->get('project_getday');
+        $value ->project_number=$request->get('project_number');
+        $value ->project_status=$request->get('project_status');
+        $value ->project_orderNumber=$request->get('project_orderNumber');
+        $value ->project_typemoney=$request->get('project_typemoney');
+        $value ->teacher_get_name=$request->get('teacher_get_name');
+        $value ->teacher_rank=$request->get('teacher_rank');
+        $value ->parcel_name=$request->get('parcel_name');
+        $value ->parcelLeader_name=$request->get('parcelLeader_name');
+        $value ->manageschool_name=$request->get('manageschool_name');
+        $value->save();
+
+        return redirect('home');
     }
 
     /**
@@ -213,7 +223,7 @@ class DocumentController extends Controller
      * @param  \App\Models\ProjectModel  $projectModel
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ProjectModel $ProjectModel, $id)
+    public function destroy($id)
     {
         $blog = ProjectModel::find($id);
         $blog->delete();

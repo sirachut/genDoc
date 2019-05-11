@@ -25,6 +25,7 @@ class StoreModel extends Model
         'bank_number',
         'bank_account',
         'bank_name',
+        'status',
         'created_at',
         'updated_at'
     ];

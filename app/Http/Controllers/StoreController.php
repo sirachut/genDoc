@@ -60,6 +60,7 @@ class StoreController extends Controller
             'bank_number',
             'bank_account',
             'bank_name',
+            'status'
         ]);
 
         StoreModel::create($request->all());
