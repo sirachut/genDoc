@@ -46,4 +46,8 @@
         @include('showtype/show_doc.four')
     </div>
 
+    <div id="five" class="container tab-pane fade"><br>
+        @include('showtype/show_doc.five')
+    </div>
+
 </div>
