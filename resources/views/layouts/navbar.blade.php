@@ -17,8 +17,11 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="{{ url('/home') }}">เอกสาร <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item ">
                         <a class="nav-link" href="{{ url('/storemanage') }}">จัดการร้านค้า <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{ url('/AjaxCRUD') }}">AjaxCRUD <span class="sr-only">(current)</span></a>
                     </li>
 
                     {{-- <li class="nav-item">

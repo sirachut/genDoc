@@ -158,17 +158,17 @@
             <div class="collapse" id="collapse_store_employee">
                 <div class="form row">
                         <div class="form-group col-md-6">
-                                <label for="store_employeeNumber">{{ __('เลขประจำตัวผู้เสียภาษี') }} </label>
-                                <input style="text" class="form-control" name="store_employeeNumber" onfocus="this.value=''" value="(ยังไม่ได้ระบุ)" required autocomplete="off">
-                                <small id="store_employeeNumber" class="form-text text-muted">ตัวอย่าง : 05735420xxxx</small>
-            
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="store_employee">{{ __('ผู้มีอำนาจลงนาม') }} </label>
-                                <input style="text" class="form-control" name="store_employee" onfocus="this.value=''" value="(ยังไม่ได้ระบุ)" required autocomplete="off">
-                                <small id="store_employee" class="form-text text-muted">คำอธิบาย : ผู้ลงนามร้านค้า</small>
-            
-                            </div>
+                            <label for="store_employeeNumber">{{ __('เลขประจำตัวผู้เสียภาษี') }} </label>
+                            <input style="text" class="form-control" name="store_employeeNumber" onfocus="this.value=''" value="(ยังไม่ได้ระบุ)" required autocomplete="off">
+                            <small id="store_employeeNumber" class="form-text text-muted">ตัวอย่าง : 05735420xxxx</small>
+        
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="store_employee">{{ __('ผู้มีอำนาจลงนาม') }} </label>
+                            <input style="text" class="form-control" name="store_employee" onfocus="this.value=''" value="(ยังไม่ได้ระบุ)" required autocomplete="off">
+                            <small id="store_employee" class="form-text text-muted">คำอธิบาย : ผู้ลงนามร้านค้า</small>
+        
+                        </div>
                 </div>
             </div>
 
@@ -223,6 +223,7 @@
             <button type="submit" class="btn btn-success">บันทึกข้อมูลร้านค้า</button>
         </div>
     </form>
+</div>
 
 
     <script>

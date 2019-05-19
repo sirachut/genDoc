@@ -148,10 +148,23 @@ class DocumentController extends Controller
         )   
         ->first();
 
+        
+
         $products = ProductModel::all()
             ->where('project_fk',$project_id);
 
+        // $total = DB::table('products')
+        //     ->sum('product_amount'*'product_price')
+        //     ->where('project_fk' , $project_id)
+        //     ->get();
+
+        $total = DB::table('products')
+                    ->select(DB::raw('SUM(product_amount * product_price) as ASD'))
+                    ->where('project_fk' , $project_id)
+                    ->get();
+
         return view('documents.show')
+            ->with(['total' => $total])
             ->with(['show' => $queries])
             ->with(['product_Q' => $products]);
     }

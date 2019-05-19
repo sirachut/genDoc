@@ -1,5 +1,3 @@
-
-
 <!-- Nav tabs -->
 <ul class="nav nav-tabs" role="tablist">
     <li class="nav-item">
@@ -48,6 +46,14 @@
 
     <div id="five" class="container tab-pane fade"><br>
         @include('showtype/show_doc.five')
+    </div>
+
+    <div id="six" class="container tab-pane fade"><br>
+        @include('showtype/show_doc.six')
+    </div>
+
+    <div id="seven" class="container tab-pane fade"><br>
+        @include('showtype/show_doc.seven')
     </div>
 
 </div>

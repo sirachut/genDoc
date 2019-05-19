@@ -108,7 +108,7 @@
 
 </div>
 
-<div class="container sticky">
+<div class="container">
     <div class="tab-content" id="v-pills-tabContent">
         <div class="tab-pane fade show active" id="show_detail" role="tabpanel" aria-labelledby="v-pills-home-tab"><br>
             @include('showtype/show_detail.app')
@@ -121,5 +121,8 @@
         </div>
     </div>
 </div>
+
+{{-- MODAL --}}
+@include('showtype/list.create')
 
 @endsection
