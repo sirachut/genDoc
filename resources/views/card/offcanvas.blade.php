@@ -42,7 +42,7 @@
   </div>
 </div>
 
-<script>
+{{-- <script>
 
   
   var deleteLinks = document.querySelectorAll('.delete');
@@ -58,4 +58,4 @@ for (var i = 0; i < deleteLinks.length; i++) {
         }
     });
 }
-</script>
+</script> --}}

@@ -437,7 +437,7 @@
     </div>
    
 </div>
-<script>
+{{-- <script>
     $('#sandbox-container input').datepicker({
         format: "dd/mm/yyyy",
         todayBtn: "linked",
@@ -445,10 +445,7 @@
         orientation: "bottom auto"
     });
 
-                // give $().bootstrapDP the bootstrap-datepicker functionality
      
-        // var datepicker = $.fn.datepicker.noConflict(); // return $.fn.datepicker to previously assigned value
-        // $.fn.bootstrapDP = datepicker;  
     $(document).ready(function() {
           
         $('[data-toggle="datepicker"]').datepicker({
@@ -471,6 +468,6 @@
         });
     });
     
-</script>
+</script> --}}
     
 @endsection

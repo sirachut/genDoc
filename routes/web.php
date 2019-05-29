@@ -11,6 +11,8 @@
 |
 */
 
+
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -19,13 +21,15 @@ Auth::routes();
 
 Route::resources([
     '/home' => 'DocumentController',
-    '/createstore' => 'StoreController',
-    '/product' => 'ProductController'
 ]);
 
 Route::resource('/storemanage', 'StoreManageController');
 
+Route::resource('/product','ProductController');
 
+Route::resource('ajaxproducts','ProductAjaxController');
+
+Route::get('/product/{$project_id}', 'ProductController@show');
 
 
 

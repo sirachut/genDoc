@@ -13,13 +13,10 @@ class ProductModel extends Model
     protected $table = 'products';
     
     protected $fillable = [
-        'product_id',
         'product_name',
-        'product_unitname',
-        'product_amount',
         'product_price',
-        'project_fk',
-        'created_at',
-        'updated_at'
+        'product_amount',
+        'product_unitname',
+        'project_fk', 
     ];
 }

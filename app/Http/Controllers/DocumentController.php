@@ -12,6 +12,8 @@ use App\Models\ProjectModel;
 use App\Models\StoreModel;
 use App\Models\ProductModel;
 use App\Models\View_DocumentModel;
+use App\Models\AjaxProductModel;
+
 
 // USER
 use Illuminate\Support\Facades\Auth;
@@ -147,8 +149,6 @@ class DocumentController extends Controller
             'stores.bank_name',
         )   
         ->first();
-
-        
 
         $products = ProductModel::all()
             ->where('project_fk',$project_id);

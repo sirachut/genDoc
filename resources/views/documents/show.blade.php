@@ -84,7 +84,7 @@
     <a class="item nav-link" data-toggle="pill" href="#">
         <i class="fas fa-list-ul"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </a>
-    <a class="item nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#show_detail" role="tab" aria-controls="show_detail" aria-selected="true">
+    <a class="item nav-link" id="v-pills-home-tab" data-toggle="pill" href="#show_detail" role="tab" aria-controls="show_detail" aria-selected="true">
         <i class="far fa-credit-card"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ดูแบบปกติ
     </a>
     <a class="item nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#show_doc" role="tab" aria-controls="show_doc" aria-selected="false">
@@ -109,6 +109,8 @@
 </div>
 
 <div class="container">
+
+
     <div class="tab-content" id="v-pills-tabContent">
         <div class="tab-pane fade show active" id="show_detail" role="tabpanel" aria-labelledby="v-pills-home-tab"><br>
             @include('showtype/show_detail.app')
@@ -117,12 +119,12 @@
             @include('showtype/show_doc.app')
         </div>
         <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-            @include('showtype/list.app')
+            @include('showtype/list.ajax')
         </div>
     </div>
+
+    
 </div>
 
-{{-- MODAL --}}
-@include('showtype/list.create')
 
 @endsection

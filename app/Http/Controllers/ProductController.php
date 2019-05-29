@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ProductModel;
+use Illuminate\Support\Facades\DB;
+
 
 class ProductController extends Controller
 {
@@ -12,9 +14,45 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $product_id)
     {
-        // return view('ajax.index');
+        $queries = DB::table('projects')
+        ->where('projects.project_id',$project_id)
+        ->join('users','projects.id_fk', '=' ,'users.id')
+        ->join('stores','projects.store_fk', '=' , 'stores.store_id')
+        ->select(
+            'projects.*', 
+            'users.name',
+            'stores.store_name',
+            'stores.store_tel',
+            'stores.store_teletex',
+            'stores.store_address',
+            'stores.store_employee',
+            'stores.store_employeeNumber',
+            'stores.bank_branch',
+            'stores.bank_number',
+            'stores.bank_account',
+            'stores.bank_name',
+        )   
+        ->first();
+
+        $products = ProductModel::all()
+            ->where('project_fk',$project_id);
+
+        // $total = DB::table('products')
+        //     ->sum('product_amount'*'product_price')
+        //     ->where('project_fk' , $project_id)
+        //     ->get();
+
+        $total = DB::table('products')
+                    ->select(DB::raw('SUM(product_amount * product_price) as ASD'))
+                    ->where('project_fk' , $project_id)
+                    ->get();
+
+        return view('showtype/list.index ')
+            ->with(['total' => $total])
+            ->with(['show' => $queries])
+            ->with(['product_Q' => $products]);
     }
 
     /**
@@ -54,9 +92,45 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($project_id)
     {
-        //
+        $queries = DB::table('projects')
+        ->where('projects.project_id',$project_id)
+        ->join('users','projects.id_fk', '=' ,'users.id')
+        ->join('stores','projects.store_fk', '=' , 'stores.store_id')
+        ->select(
+            'projects.*', 
+            'users.name',
+            'stores.store_name',
+            'stores.store_tel',
+            'stores.store_teletex',
+            'stores.store_address',
+            'stores.store_employee',
+            'stores.store_employeeNumber',
+            'stores.bank_branch',
+            'stores.bank_number',
+            'stores.bank_account',
+            'stores.bank_name',
+        )   
+        ->first();
+
+        $products = ProductModel::all()
+            ->where('project_fk',$project_id);
+
+        // $total = DB::table('products')
+        //     ->sum('product_amount'*'product_price')
+        //     ->where('project_fk' , $project_id)
+        //     ->get();
+
+        $total = DB::table('products')
+                    ->select(DB::raw('SUM(product_amount * product_price) as ASD'))
+                    ->where('project_fk' , $project_id)
+                    ->get();
+
+        return view('showtype/list.index ')
+            ->with(['total' => $total])
+            ->with(['show' => $queries])
+            ->with(['product_Q' => $products]);
     }
 
     /**

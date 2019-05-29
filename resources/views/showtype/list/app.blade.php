@@ -1,19 +1,12 @@
 <div class="container">
     <br>
     <div class="card" style="padding:15px">
-        <div class="row col-sm-12">
-            <div class="col-sm-x">
-                <h4>ตารางแสดงรายการสินค้า </h4> 
-                <small>ณ ตอนนี้ ยังไม่สามารถหาวิธีเพิ่มรายการสินค้า แบบ Multi ได้ แต่ทว่ากระผมอยากทดลองแบบทีละหนึ่งอันก่อน เพื่อที่จะสามารถไปทำส่วนอื่นๆ ได้</small>
-                &nbsp; &nbsp; 
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">เพิ่มรายการ</button>
-                <br><br>
-            </div>
-        </div>
+            
+        <h4>ตารางแสดงรายการสินค้า </h4>  <br>
+        <a href="{{ route('product.show', $show->project_id) }}" class="btn btn-info btn-sm"><i class="fas fa-file-invoice"></i> จัดการข้อมูลสินค้า</a>
 
         @php
             $countitem=1;
-            
         @endphp
 
         <table class="table table-bordered">
@@ -36,7 +29,7 @@
 
                 @php
                     $getsum = $item->product_price * $item->product_amount;
-                    $sum_without_tax = number_format($total[0]->ASD, 2, '.', ',');
+                    // $sum_without_tax = number_format($total[0]->ASD, 2, '.', ',');
 
                 @endphp
                 <tr>
@@ -48,7 +41,7 @@
                 </tr>     
                 @endforeach
                 <tr>
-                    <td colspan="5" class="text-right"><b>ยอดรวมสุทธิ {{ $sum_without_tax }} บาท</b></td>
+                    <td colspan="5" class="text-right"><b>ยอดรวมสุทธิ {{ number_format($total[0]->ASD, 2, '.', ',') }} บาท</b></td>
                 </tr>
            </tbody>
         </table>
@@ -57,6 +50,7 @@
         </div>
     </div>
 </div>
+
 
 <br><br><br><br><br><br><br>
 
