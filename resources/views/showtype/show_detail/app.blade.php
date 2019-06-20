@@ -164,7 +164,7 @@
                 <h4>ข้อมูลรายการสินค้าที่สั่งซื้อในโครงการนี้</h4>
                 <small class="form-text text-muted">หมายเหตุ : รายการสินค้าของโครงการ {{ $show->project_name }}</small><hr>
 
-                <table class="table table-bordered">
+                {{-- <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th class="text-censter align-middle" rowspan="2" width=5%>ลำดับที่</th>
@@ -219,7 +219,9 @@
                             <td class="text-right">ทดสอบ</td>
                         </tr>
                     </tbody>
-                </table>
+                </table> --}}
+
+               @include('showtype/list.tablelist_detail')
             </div>
         </div>
     </div>

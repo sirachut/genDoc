@@ -15,38 +15,7 @@
                     </p>
                     <p style="text-align:center">งานพัสดุ จำนวน {{ $countitem }} รายการ กลุ่มสาระ {{ $show->project_subject }}</p>
                     <p style="text-align:center">โรงเรียนบ้านเทอดไทย</p>
-                
-                    {{-- <table id="example" class="table table-striped table-bordered" style="width:100%">
-                        <thead>
-                            @php
-                                $i=1;
-                            @endphp
-                                <tr>
-                                    <th>#</th>
-                                    <th>ชื่อสินค้า</th>
-                                    <th>จำนวน</th>
-                                    <th>ลักษณะนาม</th>
-                                    <th>ราคา</th>
-                                    <th>ยอดรวม</th>
-                                    <th>Action</th>
-                                </tr>
-                        </thead>
-                        <tbody>
-                            
-                            @foreach ($product_Q as $item)
-                                <tr>
-                                    <td>{{ $i++ }}</td>
-                                    <td>{{ $item->product_name }}</td>
-                                    <td>{{ $item->product_amount }}</td>
-                                    <td>{{ $item->product_unitname }}</td>
-                                    <td>{{ $item->product_price }}</td>
-                                    <td>{{ $item->product_pricesum }}</td>
-                                    <td></td>
-                                </tr>
-                            @endforeach  
-                            
-                        </tbody>
-                    </table> --}}
+            
 
                     <style>
                         th,td{
@@ -73,15 +42,26 @@
                             </tr>
                         </thead>
                         <tbody>
+
+                       
+                         @foreach ($product_Q as $item)
+                         @php
+                         $getsum = $item->product_price * $item->product_amount;
+                         // $sum_without_tax = number_format($total[0]->ASD, 2, '.', ',');
+     
+                        @endphp
+
                             <tr>
                                 <td class="text-center">{{ $countitem++ }}</td>
-                                <td class="text-left">ทดสอบ</td>
-                                <td class="text-center">ทดสอบ</td>
-                                <td class="text-center">ทดสอบ</td>
-                                <td class="text-right">ทดสอบ</td>
-                                <td class="text-right">ทดสอบ</td>
-                                <td class="text-right">ทดสอบ</td>
+                                <td class="text-left align-middle">{{ $item->product_name }}</td>
+                                <td class="text-center">{{ $item->product_amount }}</td>
+                                <td class="text-center">{{ $item->product_unitname }}</td>
+                                <td class="text-right">{{ number_format($item->product_price, 2, '.', ',' )}}</td>
+                                <td class="text-right">{{ number_format($item->product_price, 2, '.', ',' )}}</td>
+                                <td class="text-right">{{ number_format($getsum, 2, '.', ',') }}</td>
                             </tr>
+
+                        @endforeach
                             <tr>
                                 <td></td>
                                 <td></td>
@@ -107,7 +87,7 @@
                                 <td></td>
                                 <td class="text-right">รวมเป็นเงินทั้งสิ้น</td>
                                 <td></td>
-                                <td class="text-right">ทดสอบ</td>
+                                <td class="text-right">{{ number_format($total[0]->ASD, 2, '.', ',') }}</td>
                             </tr>
                         </tbody>
                     </table>

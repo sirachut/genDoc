@@ -150,8 +150,7 @@ class DocumentController extends Controller
         )   
         ->first();
 
-        $products = ProductModel::all()
-            ->where('project_fk',$project_id);
+        $products = ProductModel::where('project_fk',$project_id)->get();
 
         // $total = DB::table('products')
         //     ->sum('product_amount'*'product_price')
@@ -166,7 +165,8 @@ class DocumentController extends Controller
         return view('documents.show')
             ->with(['total' => $total])
             ->with(['show' => $queries])
-            ->with(['product_Q' => $products]);
+            ->with(['product_Q' => $products])
+            ->with('project_id',$project_id);
     }
 
     /**

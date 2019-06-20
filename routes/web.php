@@ -25,11 +25,9 @@ Route::resources([
 
 Route::resource('/storemanage', 'StoreManageController');
 
-Route::resource('/product','ProductController');
-
 Route::resource('ajaxproducts','ProductAjaxController');
 
-Route::get('/product/{$project_id}', 'ProductController@show');
+Route::resource('/createstore','StoreController');
 
 
 

@@ -2,6 +2,8 @@
 
 @section('content')
 
+
+
 <img style="background-size:cover;" width="100%" height="200px" src="{{ URL::to('/assets/img/action-bg.jpg') }}">
 
 <div class="container">

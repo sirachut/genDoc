@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProductAjaxModel;
+use App\Models\ProductModel;
 use Illuminate\Http\Request;
 use DataTables;
+use Illuminate\Support\Facades\DB;
+
 
 class ProductAjaxController extends Controller
 {
@@ -15,23 +17,7 @@ class ProductAjaxController extends Controller
      */
     public function index(Request $request)
     {
-        if ($request->ajax()) {
-            $data = ProductAjaxModel::latest()->get();
-            return Datatables::of($data)
-                    ->addIndexColumn()
-                    ->addColumn('action', function($row){
-   
-                           $btn = '<a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Edit" class="edit btn btn-primary btn-sm editProduct">Edit</a>';
-   
-                           $btn = $btn.' <a href="javascript:void(0)" data-toggle="tooltip"  data-id="'.$row->id.'" data-original-title="Delete" class="btn btn-danger btn-sm deleteProduct">Delete</a>';
-    
-                            return $btn;
-                    })
-                    ->rawColumns(['action'])
-                    ->make(true);
-        }
-      
-        return view('showtype/list.ajax');
+        //
     }
 
     /**
@@ -52,10 +38,18 @@ class ProductAjaxController extends Controller
      */
     public function store(Request $request)
     {
-        ProductAjaxModel::updateOrCreate(['id' => $request->product_id],
-        ['name' => $request->name, 'detail' => $request->detail]);        
+        ProductModel::updateOrCreate(
+            ['product_id' => $request->product_id],
+            [
+                'product_name' => $request->product_name, 
+                'product_price' => $request->product_price,
+                'product_amount' => $request->product_amount,
+                'product_unitname' => $request->product_unitname,
+                'project_fk' => $request->project_fk,
 
-        return response()->json(['success'=>'Product saved successfully.']);
+            ]);        
+
+        return back();
     }
 
     /**
@@ -64,7 +58,7 @@ class ProductAjaxController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request ,$project_id)
     {
         //
     }
@@ -75,10 +69,9 @@ class ProductAjaxController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($product_id)
     {
-        $product = ProductAjaxModel::find($id);
-        return response()->json($product);
+       //
     }
 
     /**
@@ -99,10 +92,11 @@ class ProductAjaxController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($product_id)
     {
-        ProductAjaxModel::find($id)->delete();
+        ProductModel::find($product_id)->delete();
      
-        return response()->json(['success'=>'Product deleted successfully.']);
+        return back();
+
     }
 }

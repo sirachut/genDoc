@@ -116,7 +116,6 @@
                             {{-- Hidden --}}
                             <div class="form-group col-md-12">
                                 <input type="text" id="id_fk" class="form-control" name="id_fk" value="{{ $user->id }}" hidden>
-                                <input type="text" id="bill_number" class="form-control" name="bill_number" value="ยังไม่ได้ระบุ" hidden>
                                 <input type="text" id="project_status" class="form-control" name="project_status" value="n" hidden>
                                 <input type="datetime" class="form-control" data-toggle="datepicker2" name="project_dateget" hidden >
                                 {{-- <input type="date" name="project_dateget" value="0000-00-00 00:00:00" hidden> --}}
@@ -130,7 +129,7 @@
                         <div class="form row">
                             <div class="form-group col-md-4">
                                 <label for="project_department">{{ __('ฝ่ายงาน') }}<span style="color:red;">*</span></label>
-                                <input type="text" id="project_department" class="form-control" name="project_department" required>
+                                <input type="text" id="project_department" class="form-control" name="project_department" required autocomplete="off">
                                 <small id="project_department" class="form-text text-muted">คำอธิบาย : ฝ่ายงานทางโรงเรียนที่เขียนเอกสารสั่งซื้อ</small>
 
                             </div>
@@ -142,7 +141,7 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label for="project_subject">{{ __('กลุ่มสาระ') }}<span style="color:red;">*</span></label>
-                                <input type="text" id="project_subject" class="form-control" name="project_subject" required>
+                                <input type="text" id="project_subject" class="form-control" name="project_subject" required autocomplete="off">
                                 <small id="project_subject" class="form-text text-muted">คำอธิบาย : กลุ่มสาระของกิจกรรมหรือโครงการนี้</small>
 
                             </div>
@@ -195,6 +194,16 @@
                                 <small id="project_typemoney" class="form-text text-muted">คำอธิบาย : ประเภทของเงินที่ใช้ในการจัดซื้อสินค้า</small>
 
                             </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="bill_number">{{ __('เลขที่ใบเสร็จ') }}<span style="color:red;">*</span></label>
+                                <input type="text" id="bill_number" class="form-control" name="bill_number">
+                                <small id="bill_number" class="form-text text-muted">คำอธิบาย : ใบเสร็จเลขที่</small>
+
+                            </div>
+
+                            
+
 
 
                         </div>
@@ -419,13 +428,6 @@
 
 
     
-      
-
-    
-
-    
-
-  
 
     @if ($message = Session::get('success'))
         <div class="alert alert-success">

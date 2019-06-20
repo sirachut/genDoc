@@ -84,13 +84,13 @@
     <a class="item nav-link" data-toggle="pill" href="#">
         <i class="fas fa-list-ul"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </a>
-    <a class="item nav-link" id="v-pills-home-tab" data-toggle="pill" href="#show_detail" role="tab" aria-controls="show_detail" aria-selected="true">
+    <a class="item nav-link" id="v-pills-home-tab" data-toggle="pill" href="#show_detail" role="tab" aria-controls="show_detail" aria-selected="false">
         <i class="far fa-credit-card"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ดูแบบปกติ
     </a>
     <a class="item nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#show_doc" role="tab" aria-controls="show_doc" aria-selected="false">
         <i class="far fa-file-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ดูแบบเอกสาร
     </a>
-    <a class="item nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#list" role="tab" aria-controls="list" aria-selected="false">
+    <a class="item nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#list" role="tab" aria-controls="list" aria-selected="true">
         <i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; รายการสินค้า
     </a>
 </div>
@@ -112,19 +112,21 @@
 
 
     <div class="tab-content" id="v-pills-tabContent">
-        <div class="tab-pane fade show active" id="show_detail" role="tabpanel" aria-labelledby="v-pills-home-tab"><br>
+        <div class="tab-pane fade " id="show_detail" role="tabpanel" aria-labelledby="v-pills-home-tab"><br>
             @include('showtype/show_detail.app')
         </div>
         <div class="tab-pane fade" id="show_doc" role="tabpanel" aria-labelledby="v-pills-profile-tab">
             @include('showtype/show_doc.app')
         </div>
-        <div class="tab-pane fade" id="list" role="tabpanel" aria-labelledby="v-pills-messages-tab">
-            @include('showtype/list.ajax')
+        <div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+            @include('showtype/list.app')
         </div>
     </div>
 
     
 </div>
+
+
 
 
 @endsection

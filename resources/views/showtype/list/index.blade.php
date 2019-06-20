@@ -1,4 +1,3 @@
-{{-- @include('layouts.style') --}}
 
 <div class="container">
     <br>
