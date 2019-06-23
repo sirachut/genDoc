@@ -12,8 +12,6 @@ use App\Models\ProjectModel;
 use App\Models\StoreModel;
 use App\Models\ProductModel;
 use App\Models\View_DocumentModel;
-use App\Models\AjaxProductModel;
-
 
 // USER
 use Illuminate\Support\Facades\Auth;
@@ -35,21 +33,41 @@ class DocumentController extends Controller
     {
         $user = Auth::user();
 
-        $Project_n_Queries = ProjectModel::all()
+        if ($user->name=="admin") {
+
+            $Project_n_Queries = DB::table('projects')
+            ->join('users','projects.id_fk', '=' ,'users.id')
+            ->select(
+                'projects.*', 
+                'users.name',
+            )   
+            ->get();
+
+
+            $StoreQueries = StoreModel::all();
+            return view('documents.home')
+            ->with(['project_n_Q' => $Project_n_Queries])
+            ->with(['store_Q' => $StoreQueries]);
+        }else {
+
+            $Project_n_Queries = ProjectModel::all()
             ->where('project_status','n')
             ->where('id_fk', $user->id);
 
-        $Project_d_Queries = ProjectModel::all()
-            ->where('project_status','d')
-            ->where('id_fk', $user->id);
-            
-        $StoreQueries = StoreModel::all()
-            ->where('id_fk', $user->id);
-            
-        return view('documents.home')
-            ->with(['project_n_Q' => $Project_n_Queries])
-            ->with(['project_d_Q' => $Project_d_Queries])
-            ->with(['store_Q' => $StoreQueries]);
+            $Project_d_Queries = ProjectModel::all()
+                ->where('project_status','d')
+                ->where('id_fk', $user->id);
+                
+            $StoreQueries = StoreModel::all()
+                ->where('id_fk', $user->id);
+                
+            return view('documents.home')
+                ->with(['project_n_Q' => $Project_n_Queries])
+                ->with(['project_d_Q' => $Project_d_Queries])
+                ->with(['store_Q' => $StoreQueries]);
+        }
+
+       
         
         
         }

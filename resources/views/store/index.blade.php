@@ -36,8 +36,14 @@
         <div class="row col-sm-12">
             <div class="col-sm-x">
                 <h4>ตารางแสดงร้านค้า/ห้างร้าน </h4> 
-                <small>สามารถกดดูรายละเอียดเพิ่มเติมที่ "รายละเอียด" หรือ เพิ่มรายการร้านค้า ได้ที่ปุ่มด้านข้างนี้</small>
-                &nbsp; &nbsp; <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">เพิ่มรายการร้านค้า</button>
+                @if (Auth::user()->name == "admin")
+                    <small>สามารถกดดูรายละเอียดเพิ่มเติมที่ "รายละเอียด" </small>
+                    
+                @else
+                    <small>สามารถกดดูรายละเอียดเพิ่มเติมที่ "รายละเอียด" หรือ เพิ่มรายการร้านค้า ได้ที่ปุ่มด้านข้างนี้</small>
+                    &nbsp; &nbsp; <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">เพิ่มรายการร้านค้า</button>
+                @endif
+               
                 <br><br>
             </div>
         </div>
@@ -50,6 +56,9 @@
                         <th>ชื่อห้างร้าน</th>
                         <th>เบอร์โทรติดต่อ</th>
                         <th>ที่อยู่</th>
+                        @if (Auth::user()->name == "admin")
+                            <th>สร้างโดย</th>
+                        @endif
                         <th class="text-right">Actions</th>
                     </tr>
                 </thead>
@@ -66,18 +75,28 @@
                         <td>{{ $item->store_name }}</td>
                         <td>{{ $item->store_tel }}</td>
                         <td width="35%">{{ $item->store_address }}</td>
+                        @if (Auth::user()->name == "admin")
+                            <td>{{ $item->name }}</td>
+                        @endif
 
                         <form action="{{ route('storemanage.destroy',$item->store_id) }}" method="POST">
                             @csrf
                             @method('DELETE')
                             <td class="td-actions text-right">
-                                <a href="{{ route('storemanage.show',$item->store_id) }}" class="btn btn-info btn-just-icon btn-sm">
-                                    <i class="fas fa-file-invoice"></i> รายละเอียด                                    
-                                </a>
-                                <a href="{{ route('storemanage.edit',$item->store_id) }}" class="btn btn-success btn-just-icon btn-sm">
-                                    <i class="fas fa-edit"></i> แก้ไข
-                                </a>
-                                <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+
+                                @if (Auth::user()->name == "admin")
+                                    <a href="{{ route('storemanage.show',$item->store_id) }}" class="btn btn-info btn-just-icon btn-sm">
+                                        <i class="fas fa-file-invoice"></i> รายละเอียด                                    
+                                    </a>
+                                @else
+                                    <a href="{{ route('storemanage.show',$item->store_id) }}" class="btn btn-info btn-just-icon btn-sm">
+                                        <i class="fas fa-file-invoice"></i> รายละเอียด                                    
+                                    </a>
+                                    <a href="{{ route('storemanage.edit',$item->store_id) }}" class="btn btn-success btn-just-icon btn-sm">
+                                        <i class="fas fa-edit"></i> แก้ไข
+                                    </a>
+                                    <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+                                @endif
                             </td>
                         </form>
                     </tr>

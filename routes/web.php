@@ -29,6 +29,9 @@ Route::resource('ajaxproducts','ProductAjaxController');
 
 Route::resource('/createstore','StoreController');
 
+Route::resource('/director','DirectorController');
+
+
 
 
 

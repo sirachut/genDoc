@@ -22,12 +22,30 @@ class StoreManageController extends Controller
     {
         $user = Auth::user();
 
+        if ($user->name=="admin") {
+
+            $getStore = DB::table('stores')
+            ->where('stores.status','s')
+            ->join('users','stores.store_id_fk', '=' ,'users.id')
+            ->select(
+                'stores.*', 
+                'users.name',
+            )   
+            ->get();
+
+            return view('/store/index')
+            ->with('getStore',$getStore);
+        }else {
+           
+
         $getStore = StoreModel::all()
             ->where('store_id_fk', $user->id)
             ->where('status','s');
         
         return view('/store/index')
             ->with('getStore',$getStore);
+        }
+
     }
 
     /**

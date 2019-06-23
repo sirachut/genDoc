@@ -13,17 +13,32 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
+                    @if (Auth::user()->name == "admin")
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ url('/home') }}">เอกสารทั้งหมดในระบบ <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{ url('/storemanage') }}">ร้านค้าทั้งหมดในระบบ <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{ url('/director') }}">จัดการผู้ใช้งาน<span class="sr-only">(current)</span></a>
+                        </li>
+                    @else
+                        <li class="nav-item active">
+                            <a class="nav-link" href="{{ url('/home') }}">เอกสาร <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item ">
+                            <a class="nav-link" href="{{ url('/storemanage') }}">จัดการร้านค้า <span class="sr-only">(current)</span></a>
+                        </li>
+                    @endif
+                   
 
-                    <li class="nav-item active">
-                        <a class="nav-link" href="{{ url('/home') }}">เอกสาร <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="{{ url('/storemanage') }}">จัดการร้านค้า <span class="sr-only">(current)</span></a>
-                    </li>
-
-                    {{-- <li class="nav-item">
-                        <a class="nav-link" disabled href="#">จัดการผู้ใช้</a>
-                    </li> --}}
+                    {{-- @if (Auth::user()->name == "admin")
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">จัดการผู้ใช้</a>
+                        </li>
+                    @endif --}}
+                    
 
                    {{--  <li class="nav-item dropdown">
 
