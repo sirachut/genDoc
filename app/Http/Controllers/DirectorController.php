@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 use App\Models\DirectorModel;
+use Illuminate\Support\Facades\DB;
+
 
 use Illuminate\Http\Request;
+// USER
+use Illuminate\Support\Facades\Auth;
 
 class DirectorController extends Controller
 {
@@ -38,7 +42,18 @@ class DirectorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'director_id' => 'required',
+            'teacher_getproduct_name' => 'required',
+            'teacher_rank' => 'required',
+            'parcelcheck_name'=> 'required',
+            'parcelheader_name' => 'required',
+            'director_name' => 'required'
+        ]);
+
+        DirectorModel::create($request->all());
+        
+        return redirect()->route('director.index');
     }
 
     /**
@@ -60,7 +75,16 @@ class DirectorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = Auth::user();
+        $director = DB::table('directors')
+        ->select(
+            'directors.*',
+        )
+        ->get();
+        $value = \App\Models\DirectorModel::find($id);
+        return view('documents.directoredit',compact('value','id'))
+            ->with(['director' => $director])
+            ->with(['user' => $user]);
     }
 
     /**

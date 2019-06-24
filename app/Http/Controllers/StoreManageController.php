@@ -129,7 +129,7 @@ class StoreManageController extends Controller
             ->select(
                 'directors.*',
             )
-            ->first();
+            ->get();
             
         $value = \App\Models\StoreModel::find($id);
         return view('store.edit',compact('value','id'))

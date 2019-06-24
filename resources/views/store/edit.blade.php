@@ -54,27 +54,27 @@
                     <div class="row">
                         <div class="form-group col-sm-4">
                             <label for="">ห้างร้านที่จัดซื้อ</label>
-                            <input class="form-control" value="{{ $value->store_name}}">
+                            <input class="form-control" name="store_name" value="{{ $value->store_name}}">
                         </div>
                         <div class="form-group col-sm-4">
                             <label for="">โทรศัพท์</label>
-                            <input class="form-control" value="{{ $value->store_tel}}">
+                            <input class="form-control" name="store_tel" value="{{ $value->store_tel}}">
                         </div>
                         <div class="form-group col-sm-4">
                             <label for="">โทรสาร</label>
-                            <input class="form-control" value="{{ $value->store_teletex}}">
+                            <input class="form-control" name="store_teletex" value="{{ $value->store_teletex}}">
                         </div>
                         <div class="form-group col-sm-12">
                             <label for="">ที่อยู่ร้านค้า</label>
-                            <input class="form-control" value="{{ $value->store_address}}">
+                            <input class="form-control" name="store_address" value="{{ $value->store_address}}">
                         </div>
                         <div class="form-group col-sm-6">
                             <label for="">ผู้มีอำนาจลงนาม</label>
-                            <input class="form-control" value="{{ $value->store_employee}}">
+                            <input class="form-control" name="store_employee" value="{{ $value->store_employee}}">
                         </div>
                         <div class="form-group col-sm-6">
                             <label for="">เลขประจำตัวผู้เสียภาษี</label>
-                            <input class="form-control" value="{{ $value->store_employeeNumber}}">
+                            <input class="form-control" name="store_employeeNumber" value="{{ $value->store_employeeNumber}}">
                         </div>
                     </div>
                 </div> 
@@ -86,20 +86,20 @@
                     <div class="row">
                         <div class="form-group col-sm-12">
                             <label for="">ชื่อบัญชี</label>
-                            <input class="form-control" value="{{ $value->bank_account}}">
+                            <input class="form-control" name="bank_account" value="{{ $value->bank_account}}">
                         
                         </div>
                         <div class="form-group col-sm-12">
                                 <label for="">เลขที่บัญชีเงินฝากธนาคาร</label>
-                                <input class="form-control" value="{{ $value->bank_number}}">
+                                <input class="form-control" name="bank_number" value="{{ $value->bank_number }}">
                         </div>
                         <div class="form-group col-sm-6">
                                 <label for="">ธนาคาร</label>
-                                <input class="form-control" value="{{ $value->bank_name}}">
+                                <input class="form-control" name="bank_name" value="{{ $value->bank_name }}">
                         </div>
                         <div class="form-group col-sm-6">
                                 <label for="">สาขา</label>
-                                <input class="form-control" value="{{ $value->bank_branch}}">
+                                <input class="form-control" name="bank_branch" value="{{ $value->bank_branch }}">
                         </div>
                     </div>
                 </div>
@@ -107,7 +107,7 @@
             
             {{-- Hidden --}}
 
-        <input type="text" name="store_id_fk" value="{{ $value->store_id_fk}}" hidden>
+        <input type="text" name="store_id_fk" value="{{ $value->store_id_fk }}" hidden>
         <input type="text" name="status" value="{{ $value->status}}" hidden>
 
         </div>

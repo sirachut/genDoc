@@ -21,7 +21,7 @@
                             <a class="nav-link" href="{{ url('/storemanage') }}">ร้านค้าทั้งหมดในระบบ <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item ">
-                            <a class="nav-link" href="{{ url('/director') }}">จัดการผู้ใช้งาน<span class="sr-only">(current)</span></a>
+                            <a class="nav-link" href="{{ url('/director') }}">บุคลากรโรงเรียน<span class="sr-only">(current)</span></a>
                         </li>
                     @else
                         <li class="nav-item active">
@@ -32,12 +32,6 @@
                         </li>
                     @endif
                    
-
-                    {{-- @if (Auth::user()->name == "admin")
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">จัดการผู้ใช้</a>
-                        </li>
-                    @endif --}}
                     
 
                    {{--  <li class="nav-item dropdown">
@@ -106,6 +100,5 @@
             </div>
         </div>
     </nav>
-
 
     
