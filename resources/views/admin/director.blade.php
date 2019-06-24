@@ -11,10 +11,10 @@
 
         <div class="card-body">
           <h4 class="card-title">ข้อมูลบุคลากรโรงเรียนบ้านเทอดไทย</h4>
-          <small class="card-subtitle mb-2 text-muted">เป็นข้อมูลบุคลากร ที่เป็นค่าเริ่มต้น (Default) ในแต่ละโครงการ/กิจกรรม</small>
+          <small class="card-subtitle mb-2 text-muted">เป็นข้อมูลบุคลากร ที่เป็นค่าเริ่มต้น (Default) ในแต่ละโครงการ/กิจกรรม</small><hr>
 
 
-          <p class="card-text"><br>
+          <p class="card-text">
 
               <div class="row">
                 <div class="form-group col-sm-6">
@@ -31,7 +31,7 @@
                 </div>
                 <div class="form-group col-sm-12">
                     <label for="">หัวหน้าเจ้าหน้าที่พัสดุ</label>
-                    <input type="text" class="form-control" value="{{ $item->parcelcheck_name }}" disabled>
+                    <input type="text" class="form-control" value="{{ $item->headerparcel_name }}" disabled>
                 </div>
                 <div class="form-group col-sm-6">
                     <label for="">ผู้อำนวยการโรงเรียนบ้านเทอดไทย</label>

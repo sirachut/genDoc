@@ -21,6 +21,9 @@
                             <a class="nav-link" href="{{ url('/storemanage') }}">ร้านค้าทั้งหมดในระบบ <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item ">
+                            <a class="nav-link" href="{{ url('/usermanage') }}">ข้อมูลผู้ใช้งาน<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item ">
                             <a class="nav-link" href="{{ url('/director') }}">บุคลากรโรงเรียน<span class="sr-only">(current)</span></a>
                         </li>
                     @else

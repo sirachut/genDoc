@@ -31,6 +31,8 @@ Route::resource('/createstore','StoreController');
 
 Route::resource('/director','DirectorController');
 
+Route::resource('/usermanage', 'UserManageController');
+
 
 
 

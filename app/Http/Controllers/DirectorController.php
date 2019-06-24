@@ -20,7 +20,7 @@ class DirectorController extends Controller
     {
         $getDirector = DirectorModel::all();
 
-        return view('documents.director')
+        return view('admin.director')
         ->with('getDirector', $getDirector);
     }
 
@@ -47,7 +47,7 @@ class DirectorController extends Controller
             'teacher_getproduct_name' => 'required',
             'teacher_rank' => 'required',
             'parcelcheck_name'=> 'required',
-            'parcelheader_name' => 'required',
+            'headerparcel_name' => 'required',
             'director_name' => 'required'
         ]);
 
@@ -82,8 +82,8 @@ class DirectorController extends Controller
         )
         ->get();
         $value = \App\Models\DirectorModel::find($id);
-        return view('documents.directoredit',compact('value','id'))
-            ->with(['director' => $director])
+        return view('admin.directoredit',compact('value','id'))
+            ->with(['getDirector' => $director])
             ->with(['user' => $user]);
     }
 
@@ -96,7 +96,15 @@ class DirectorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $value = \App\Models\DirectorModel::find($id);
+        $value ->teacher_getproduct_name=$request->get('teacher_getproduct_name');
+        $value ->teacher_rank=$request->get('teacher_rank');
+        $value ->parcelcheck_name=$request->get('parcelcheck_name');
+        $value ->headerparcel_name=$request->get('headerparcel_name');
+        $value ->director_name=$request->get('director_name');
+        $value->save();
+
+        return redirect('director');
     }
 
     /**
