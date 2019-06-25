@@ -149,7 +149,7 @@ class DocumentController extends Controller
     public function show($project_id)
     {
         $queries = DB::table('projects')
-        ->where('projects.project_id',$project_id)
+        ->where('projects.project_id',$project_id)  
         ->join('users','projects.id_fk', '=' ,'users.id')
         ->join('stores','projects.store_fk', '=' , 'stores.store_id')
         ->select(
