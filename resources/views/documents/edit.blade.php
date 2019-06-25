@@ -55,19 +55,19 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="project_datein">{{ __('วันเดือนปี ที่จัดซื้อ') }}<span style="color:red;">*</span></label>
-                                    <input type="date" name="project_datein" class="form-control"> 
+                                    <input type="date" name="project_datein" class="form-control" value="{{ $value->project_datein }}"> 
                                     <small id="project_datein" class="form-text text-muted">คำอธิบาย : วันเดือนปี ที่เอกสารถูกเขียนขึ้น</small>
                                 </div> 
                                 <div class="form-group col-md-4">
                                     <label for="project_getday">{{ __('กำหนดใช้ภายใน') }}<span style="color:red;">*</span></label>
                                     <select class="form-control" id="project_getday" name="project_getday" required >
                                         <option disabled selected>กรุณากำหนดวันตรวจรับสินค้า</option>
-                                        <option value="3">3 วัน</option>
-                                        <option value="5">5 วัน</option>
-                                        <option value="7">7 วัน</option>
-                                        <option value="10">10 วัน</option>
-                                        <option value="15">15 วัน</option>
-                                        <option value="30">30 วัน</option>
+                                        <option value="3" @if($value->project_getday == '3') selected="selected" @endif>3 วัน</option>
+                                        <option value="5"  @if($value->project_getday == '5') selected="selected" @endif>5 วัน</option>
+                                        <option value="7"  @if($value->project_getday == '7') selected="selected" @endif>7 วัน</option>
+                                        <option value="10"  @if($value->project_getday == '10') selected="selected" @endif>10 วัน</option>
+                                        <option value="15"  @if($value->project_getday == '15') selected="selected" @endif>15 วัน</option>
+                                        <option value="30"  @if($value->project_getday == '30') selected="selected" @endif>30 วัน</option>
                                     </select>
                                     <small id="project_getday" class="form-text text-muted">คำอธิบาย : เพื่อกำหนดวันรับรายการของโครงการ</small>
                                 </div>
@@ -98,10 +98,10 @@
                             <div class="form row">
                                 <div class="form-group col-md-4">
                                     <label for="store_fk">{{ __('กรุณาเลือกร้านค้า') }}<span style="color:red;">*</span></label>
-                                    <select class="form-control" id="store_fk" name="store_fk" required value="{{ $value->project_typemoney}}"> 
+                                    <select class="form-control" id="store_fk" name="store_fk" required> 
                                             <option selected disabled>กรุณาเลือกร้านค้า</option>
                                         @foreach ($create_Q as $item) 
-                                            <option value="{{ $item->store_id }}">{{ $item->store_name }}</option>
+                                            <option value="{{ $item->store_id }}" @if($value->store_fk == $item->store_id ) selected="selected" @endif>{{ $item->store_name }}</option>
                                         @endforeach
                                 
                                     </select>
@@ -184,7 +184,7 @@
                                 
             
                             
-                        </div>
+                        </div> 
     
                            
                             <div class="form row" style="float:right">
@@ -203,5 +203,6 @@
       </form>
 
 </div>
+<br><br><br>
  
 @endsection
