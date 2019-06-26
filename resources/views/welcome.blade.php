@@ -32,7 +32,7 @@
             }
 
             .full-height {
-                height: 100vh;
+                height: 80vh;
             }
 
             .flex-center {
@@ -81,6 +81,14 @@
         </style>
     </head>
     <body>
+            <nav class="navbar navbar-expand navbar-light" style="background-color: #e3f2fd;">
+                    <div class="container">
+            
+                        <a class="navbar-brand" href="{{ url('/') }}">
+                            genDoc
+                        </a>
+                    </div>
+            </nav>
 
         <div class="flex-center position-ref full-height">
 
@@ -108,7 +116,7 @@
                     <div class="col-sm-7">
                         <div class="col-sm-12 wow animated fadeInRight">
 
-                            <img class="logogendoc" src="{{ URL::asset('images/gendoc.png') }}" width="70%"  alt="">
+                            <img class="logogendoc" src="{{ URL::asset('images/gendoc.png') }}" width="60%"  alt="">
                             <h4>ระบบจัดการการสั่งซื้อทางราชการ ของโรงเรียนบ้านเทอดไทย</h4>
                             <p>เว็บแอพพลิเคชัน ระบบการจัดการการสั่งซื้อของโรงเรียนบ้านเทอดไทย เป็นการนำข้อมูลโครงการ/กิจกรรม ที่มีการติดต่อกับห้างร้านเพื่อทำการซื้อขาย
                                  สินค้าที่จำเป็นต่อการดำเนินของโครงการ/กิจกรรม ของโรงเรียนบ้านเทอดไทย 

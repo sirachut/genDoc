@@ -117,9 +117,6 @@
                             <div class="form-group col-md-12">
                                 <input type="text" id="id_fk" class="form-control" name="id_fk" value="{{ $user->id }}" hidden>
                                 <input type="text" id="project_status" class="form-control" name="project_status" value="n" hidden>
-                                <input type="datetime" class="form-control" data-toggle="datepicker2" name="project_dateget" hidden >
-                                {{-- <input type="date" name="project_dateget" value="0000-00-00 00:00:00" hidden> --}}
-
                             </div>
 
 
@@ -149,15 +146,9 @@
                                 <label for="project_datein">{{ __('วันเดือนปี ที่จัดซื้อ') }}<span style="color:red;">*</span></label>
                                 <input type="date" name="project_datein" class="form-control"> 
                                 <small id="project_datein" class="form-text text-muted">คำอธิบาย : วันเดือนปี ที่เอกสารถูกเขียนขึ้น</small>
-
-                                {{-- <div id="sandbox-container">
-                                        <input type="timestamp" class="form-control" name="project_datein" autocomplete="off">
-
-                                </div> --}}
-                                
-                                {{-- <div data-toggle="datepicker"></div> --}}
                                 
                             </div> 
+                        
                             <div class="form-group col-md-4">
                                 <label for="project_getday">{{ __('กำหนดใช้ภายใน') }}<span style="color:red;">*</span></label>
                                 <select class="form-control" id="project_getday" name="project_getday" required>
@@ -172,8 +163,12 @@
                                 <small id="project_getday" class="form-text text-muted">คำอธิบาย : เพื่อกำหนดวันรับรายการของโครงการ</small>
 
                             </div>
-
-                            
+                            <div class="form-group col-md-4">
+                                <label for="project_dateget">{{ __('วันเดือนปี ที่ตรวจรับ') }}<span style="color:red;">*</span></label>
+                                <input type="date" name="project_dateget" class="form-control"> 
+                                <small id="project_datein" class="form-text text-muted">คำอธิบาย : วันเดือนปี ที่ครบกำหนดรับสินค้าจากห้างร้าน</small>
+                                
+                            </div> 
                             <div class="form-group col-md-4">
                                 <label for="project_number">{{ __('เลขที่จัดซื้อ') }}<span style="color:red;">*</span></label>
                                 <input type="text" id="project_number" class="form-control" name="project_number" autocomplete="off">
@@ -268,8 +263,8 @@
                        
                         <div class="form row" style="float:right">
 
-                            <input type="reset" class="btn btn-dark" value="Reset">&nbsp;
-                            <button type="submit reset" class="btn btn-success">บันทึกข้อเอกสาร</button> 
+                            <a class="btn btn-dark" href="{{ route('home.index') }}">ยกเลิก</a>&nbsp;
+                            <button type="submit reset" class="btn btn-success">บันทึกกิจกรรม/โครงการ</button> 
 
         
                         </div>
@@ -415,7 +410,6 @@
         <!-- Modal footer -->
 
         <div class="modal-footer">
-            <input type="reset" class="btn btn-dark" value="Reset">
             <button type="submit" class="btn btn-success">บันทึกข้อมูลร้านค้า</button>
         </div>
     </form>

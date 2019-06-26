@@ -1,5 +1,5 @@
 <div id="app">
-    <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #e3f2fd;"">
+    <nav class="navbar navbar-expand-sm navbar-light" style="background-color: #e3f2fd;">
         <div class="container">
 
             <a class="navbar-brand" href="{{ url('/') }}">

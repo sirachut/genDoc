@@ -1,6 +1,20 @@
-@extends('documents.app')
+@include('layouts.style') 
+<nav class="navbar navbar-expand navbar-light" style="background-color: #e3f2fd;">
+        <div class="container">
 
-@section('content')
+            <a class="navbar-brand" href="{{ url('/') }}">
+                genDoc
+            </a>
+        </div>
+</nav>
+
+<style>
+    div{
+        font-family: 'Sarabun', sans-serif;
+    }
+</style>
+
+<br><br><br>    
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">

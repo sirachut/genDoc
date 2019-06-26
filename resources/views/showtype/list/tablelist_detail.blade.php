@@ -17,7 +17,10 @@
         </thead>
         <tbody>
 
-       
+            @php
+                $i=1;
+            @endphp
+
          @foreach ($product_Q as $item)
          @php
          $getsum = $item->product_price * $item->product_amount;
@@ -26,7 +29,7 @@
         @endphp
 
             <tr>
-                <td class="text-center">{{ $countitem++ }}</td>
+                <td class="text-center">{{ $i++ }}</td>
                 <td class="text-left align-middle">{{ $item->product_name }}</td>
                 <td class="text-center">{{ $item->product_amount }}</td>
                 <td class="text-center">{{ $item->product_unitname }}</td>

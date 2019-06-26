@@ -1,4 +1,19 @@
-@include('layouts.style') <br><br><br><br>
+@include('layouts.style') 
+<nav class="navbar navbar-expand navbar-light" style="background-color: #e3f2fd;">
+        <div class="container">
+
+            <a class="navbar-brand" href="{{ url('/') }}">
+                genDoc
+            </a>
+        </div>
+</nav>
+
+<style>
+    div{
+        font-family: 'Sarabun', sans-serif;
+    }
+</style>
+<br><br><br><br>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
@@ -78,6 +93,7 @@
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('ลงทะเบียน') }}
                                 </button>
+                                
                             </div>
                         </div>
                     </form>
