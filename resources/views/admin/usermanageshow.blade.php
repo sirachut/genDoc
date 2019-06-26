@@ -9,7 +9,7 @@
                 <div class="row" >
                     <div class="form-group col-sm-4">
                         <label for="">ชื่อ-นามสกุล</label>
-                        <p class="form-control">ทดสอบ</p>
+                        <p class="form-control">{{ $getUserDetail->fullname }}</p>
                     </div>
                     <div class="form-group col-sm-4">
                         <label for="">Username</label>

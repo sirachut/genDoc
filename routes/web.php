@@ -33,6 +33,13 @@ Route::resource('/director','DirectorController');
 
 Route::resource('/usermanage', 'UserManageController');
 
+Route::resource('/profile', 'ProfileController');
+
+
+
+
+
+
 
 
 

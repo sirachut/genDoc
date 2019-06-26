@@ -29,7 +29,7 @@
                         @foreach ($getUser as $item)
                             <tr>
                                 <td>{{ $i++ }}</td>
-                                <td>ทดสอบ</td>
+                                <td>{{ $item->fullname }}</td>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->email }}</td>
                                 <td> 
