@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container" style="font-size:14px">
     <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-9">
             <fieldset class="scheduler-border">
                 <legend class="scheduler-border"><h4>รายการสินค้า</h4></legend>
 
@@ -17,14 +17,14 @@
                     <p style="text-align:center">โรงเรียนบ้านเทอดไทย</p>
             
 
-                    <style>
-                        th,td{
-                            font-size: 14px;
+                    {{-- <style>
+                       #test{
+                            font-size: 12px;
                         }
 
-                    </style>
+                    </style> --}}
 
-                    <table class="table table-bordered">
+                    <table class="table table-bordered table-sm" style="font-size:12px">
                         <thead>
                             <tr>
                                 <th class="text-center align-middle" rowspan="2" width=5%>ลำดับที่</th>
@@ -44,11 +44,12 @@
                         <tbody>
 
                        
-                         @foreach ($product_Q as $item)
-                         @php
-                         $getsum = $item->product_price * $item->product_amount;
-                         // $sum_without_tax = number_format($total[0]->ASD, 2, '.', ',');
-     
+                        @foreach ($product_Q as $item)
+                        @php
+                            $getsum = $item->product_price * $item->product_amount;
+                            $beforetax = ($total[0]->getTotal * 100)/107;
+                            $tax = $total[0]->getTotal - $beforetax;
+                            
                         @endphp
 
                             <tr>
@@ -69,7 +70,7 @@
                                 <td></td>
                                 <td class="text-right">รวมราคาสินค้าและบริการ</td>
                                 <td></td>
-                                <td class="text-right">ทดสอบ</td>
+                                <td class="text-right">{{ number_format($beforetax, 2, '.', ',' )}}</td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -78,7 +79,7 @@
                                 <td></td>
                                 <td class="text-right">ภาษี 7%</td>
                                 <td></td>
-                                <td class="text-right">ทดสอบ</td>
+                                <td class="text-right">{{ number_format($tax, 2, '.', ',' )}}</td>
                             </tr>
                             <tr>
                                 <td></td>

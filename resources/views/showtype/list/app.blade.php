@@ -8,7 +8,7 @@
                 <small>ใบเสร็จเลขที่ : {{ $show->bill_number }} ของโครงการ : {{ $show->project_name }}</small>  <br>
         
                 <div class="table-responsive">
-                    <table class="table table-hover" id="project_datatable">
+                    <table class="table table-hover" id="project_datatable" style="font-size:14px">
                         <thead>
                             <tr>
                                 <th class="text-center">#</th>

@@ -184,6 +184,7 @@ class DocumentController extends Controller
                     ->select(DB::raw('SUM(product_amount * product_price) as getTotal'))
                     ->where('project_fk' , $project_id)
                     ->get();
+        
 
         return view('documents.show')
             ->with(['count' => $count])
