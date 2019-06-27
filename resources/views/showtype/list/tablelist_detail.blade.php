@@ -46,7 +46,7 @@
                 <td></td>
                 <td class="text-right">รวมเป็นเงินทั้งสิ้น</td>
                 <td></td>
-                <td class="text-right">{{ number_format($total[0]->ASD, 2, '.', ',') }}</td>
+                <td class="text-right">{{ number_format($total[0]->getTotal, 2, '.', ',') }}</td>
             </tr>
         </tbody>
     </table>

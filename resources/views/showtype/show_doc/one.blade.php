@@ -87,7 +87,7 @@
                         <div class="from-inline row">
                             <div class="col-sm-2">ข้อที่ 6</div>
                             <div class="col-sm-4">จำนวนรายการที่ขอซื้อ</div>
-                            <div class="col-sm-6" style="color: red"> รายการ</div>
+                            <div class="col-sm-6" style="color: red">{{ $count[0]->getCount }} รายการ</div>
                         </div>
                     </li>
                     <li class="list-group-item">
@@ -238,7 +238,7 @@
                     <li class="list-group-item">
                         <div class="from-inline row">
                             <div class="col-sm-2">คงจ่ายจริง</div>
-                            <div class="col-sm-2" style="color: red">{{ number_format($total[0]->ASD, 2, '.', ',') }} บาท</div>
+                            <div class="col-sm-2" style="color: red">{{ number_format($total[0]->getTotal, 2, '.', ',') }} บาท</div>
                         </div>
                     </li>
                     <li class="list-group-item">
@@ -253,21 +253,21 @@
                         <div class="from-inline row">
                             <div class="col-sm-2">ข้อที่ 18</div>
                             <div class="col-sm-4">เจ้าหน้าที่พัสดุ</div>
-                            <div class="col-sm-6" style="color: red">นางสาวอรวรรณ สมเมือง</div>
+                            <div class="col-sm-6" style="color: red">{{ $show->parcel_name }}</div>
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="from-inline row">
                             <div class="col-sm-2">ข้อที่ 19</div>
                             <div class="col-sm-4">หัวหน้าเจ้าหน้าที่พัสดุ</div>
-                            <div class="col-sm-6" style="color: red">นายนิพล ชัยวงษ์วัน</div>
+                            <div class="col-sm-6" style="color: red">{{ $show->parcelLeader_name }}</div>
                         </div>
                     </li>
                     <li class="list-group-item">
                         <div class="from-inline row">
                             <div class="col-sm-2">ข้อที่ 20</div>
                             <div class="col-sm-4">ผู้อำนวยการโรงเรียน</div>
-                            <div class="col-sm-6" style="color: red">นายอนุชิต  ไทยรัศมี</div>
+                            <div class="col-sm-6" style="color: red">{{ $show->manageschool_name }}</div>
                         </div>
                     </li>
                 </ul>

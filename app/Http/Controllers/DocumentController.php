@@ -148,6 +148,11 @@ class DocumentController extends Controller
      */
     public function show($project_id)
     {
+        $count = DB::table('products')
+            ->select(DB::raw('COUNT(project_fk) as getCount'))
+            ->where('project_fk' , $project_id)
+            ->get();
+
         $queries = DB::table('projects')
         ->where('projects.project_id',$project_id)  
         ->join('users','projects.id_fk', '=' ,'users.id')
@@ -176,11 +181,12 @@ class DocumentController extends Controller
         //     ->get();
 
         $total = DB::table('products')
-                    ->select(DB::raw('SUM(product_amount * product_price) as ASD'))
+                    ->select(DB::raw('SUM(product_amount * product_price) as getTotal'))
                     ->where('project_fk' , $project_id)
                     ->get();
 
         return view('documents.show')
+            ->with(['count' => $count])
             ->with(['total' => $total])
             ->with(['show' => $queries])
             ->with(['product_Q' => $products])
