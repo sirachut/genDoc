@@ -78,7 +78,7 @@
                             <div class="col-sm-4">วัน เดือน ปี ที่ต้องการใช้พัสดุ</div>
                             <div class="col-sm-6" style="color: red">
                                 @php
-                                    echo App\Http\Controllers\DocumentController::DateThai($show->created_at);
+                                    echo App\Http\Controllers\DocumentController::DateThai($show->project_datein);
                                 @endphp
                             </div>
                         </div>
@@ -170,11 +170,11 @@
                         <div class="from-inline row">
                             <div class="col-sm-2">ข้อที่ 14</div>
                             <div class="col-sm-2">ใบเสนอราคาเลขที่</div>
-                            <div class="col-sm-2" style="color: red"></div>
+                            <div class="col-sm-2" style="color: red">{{ $show->bill_number }}</div>
                             <div class="col-sm-2">ลงวันที่</div>
                             <div class="col-sm" style="color: red">
                                 @php
-                                    echo App\Http\Controllers\DocumentController::DateThai($show->created_at);
+                                    echo App\Http\Controllers\DocumentController::DateThai($show->project_datein);
                                 @endphp
                             </div>
                         </div>
@@ -183,16 +183,20 @@
                         <div class="from-inline row">
                             <div class="col-sm-2">ข้อที่ 15</div>
                             <div class="col-sm-4">กำหนดวัน เดือน ปี ที่ส่งของ</div>
-                            <div class="col-sm-6" style="color: red"></div>
+                            <div class="col-sm-6" style="color: red">
+                                @php
+                                    echo App\Http\Controllers\DocumentController::DateThai($show->project_dateget);
+                                @endphp
+                            </div>
                         </div>
                     </li> 
                     <li class="list-group-item">
                         <div class="from-inline row">
                             <div class="col-sm-2">ข้อที่ 16</div>
                             <div class="col-sm-2">ผู้ตรวจรับ</div>
-                            <div class="col-sm-2" style="color: red"></div>
+                            <div class="col-sm-2" style="color: red">{{ $show->teacher_get_name }}</div>
                             <div class="col-sm-2">ตำแหน่ง</div>
-                            <div class="col-sm-2" style="color: red"></div>
+                            <div class="col-sm-2" style="color: red">{{ $show->teacher_rank }}</div>
 
                         </div>
                     </li>
@@ -200,9 +204,13 @@
                         <div class="from-inline row">
                             <div class="col-sm-2">ข้อที่ 17</div>
                             <div class="col-sm-2">วัน เดือน ปี ที่ตรวจรับ</div>
-                            <div class="col-sm-2" style="color: red"></div>
+                            <div class="col-sm-2" style="color: red">
+                                @php
+                                     echo App\Http\Controllers\DocumentController::DateThai($show->project_dateget);
+                                @endphp
+                            </div>
                             <div class="col-sm-2">ใบส่งของ/ใบแจ้งหนี้/ใบเสร็จ เล่มที่</div>
-                            <div class="col-sm-2" style="color: red"></div>
+                            <div class="col-sm-2" style="color: red">{{ $show->bill_number }}</div>
                         </div>
                     </li> 
                     <li class="list-group-item">
@@ -211,7 +219,11 @@
                             <div class="col-sm-2">เลขที่</div>
                             <div class="col-sm-2" style="color: red"></div>
                             <div class="col-sm-2">ลงวันที่</div>
-                            <div class="col-sm-2" style="color: red"></div>
+                            <div class="col-sm-2" style="color: red">
+                                @php
+                                    echo App\Http\Controllers\DocumentController::DateThai($show->project_dateget);
+                                @endphp
+                            </div>
                         </div>
                     </li> 
                     <li class="list-group-item">
@@ -225,11 +237,8 @@
                     </li>
                     <li class="list-group-item">
                         <div class="from-inline row">
-                            <div class="col-sm-2"></div>
-                            <div class="col-sm-2">ภาษี หัก ณ ที่จ่าย</div>
-                            <div class="col-sm-2" style="color: red">บาท</div>
                             <div class="col-sm-2">คงจ่ายจริง</div>
-                            <div class="col-sm-2" style="color: red">บาท</div>
+                            <div class="col-sm-2" style="color: red">{{ number_format($total[0]->ASD, 2, '.', ',') }} บาท</div>
                         </div>
                     </li>
                     <li class="list-group-item">

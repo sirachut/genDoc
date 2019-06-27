@@ -7,19 +7,19 @@
                 <small class="form-text text-muted">หมายเหตุ : รายละเอียดพื้นฐาน ของโครงการ {{ $show->project_name }}</small><hr>
 
                 <div class="row">
-                    <div class="form-group col-sm-4">
+                    <div class="form-group col-sm-12">
                         <label for="">ฝ่ายงาน</label>
                         <p  class="form-control" >{{ $show->project_department }}</p>
                     </div>
-                    <div class="form-group col-sm-8">
+                    <div class="form-group col-sm-12">
                         <label for="">กิจกรรม/โครงการ</label>
                         <p class="form-control" >{{ $show->project_name }}</p>
                     </div>
-                    <div class="form-group col-sm-4">
+                    <div class="form-group col-sm-12">
                         <label for="">กลุ่มสาระ</label>
                         <p class="form-control" >{{ $show->project_subject }}</p>
                     </div>
-                    <div class="form-group col-sm-8">
+                    <div class="form-group col-sm-4">
                         <label for="">วันเดือนปี ที่จัดซื้อ</label>
                         <p class="form-control"> 
                             @php
@@ -27,11 +27,19 @@
                             @endphp
                         </p>
                     </div>
-                    <div class="form-group col-sm-6">
+                    <div class="form-group col-sm-4">
+                        <label for="">วันเดือนปี ที่ตรวจรับ</label>
+                        <p class="form-control"> 
+                            @php
+                                echo App\Http\Controllers\DocumentController::DateThai($show->project_dateget);
+                            @endphp
+                        </p>
+                    </div>
+                    <div class="form-group col-sm-4">
                         <label for="">เลขที่จัดซื้อ</label>
                         <p  class="form-control" >{{ $show->project_number }}</p>
                     </div>
-                    <div class="form-group col-sm-6">
+                    <div class="form-group col-sm-4">
                         <label for="">เลขที่คำสั่ง</label>
                         <p  class="form-control" >{{ $show->project_orderNumber }}</p>
                     </div>
@@ -39,7 +47,7 @@
                         <label for="">กำหนดใช้ภายใน</label>
                         <p  class="form-control" >{{ $show->project_getday }} วัน</p>
                     </div> 
-                    <div class="form-group col-sm-8">
+                    <div class="form-group col-sm-4">
                         <label for="">ประเภทของเงิน</label>
                         <p  class="form-control" >{{ $show->project_typemoney }}</p>
                     </div> 
@@ -57,19 +65,19 @@
                         
                         <div class="row">
 
-                            <div class="form-group col-sm-8">
+                            <div class="form-group col-sm-12">
                                 <label for="">ห้างร้านบริษัทที่จัดซื้อ</label>
                                 <p  class="form-control" >{{ $show->store_name }}</p>
                             </div>
-                            <div class="form-group col-sm-4">
+                            <div class="form-group col-sm-6">
                                 <label for="">โทรศัพท์</label>
                                 <p  class="form-control" >{{ $show->store_tel }}</p>
                             </div>
-                            <div class="form-group col-sm-4">
+                            <div class="form-group col-sm-6">
                                 <label for="">โทรสาร</label>
                                 <p  class="form-control" >{{ $show->store_teletex }}</p>
                             </div>
-                            <div class="form-group col-sm-8">
+                            <div class="form-group col-sm-12">
                                 <label for="">ที่อยู่ของห้างร้าน</label>
                                 <p  class="form-control" >{{ $show->store_address }}</p>
                             </div>
@@ -134,11 +142,11 @@
                                 <label for="">เลขที่บัญชีเงินฝากธนาคาร</label>
                                 <p  class="form-control" >{{ $show->bank_number }}</p>
                             </div>
-                            <div class="form-group col-sm-6">
+                            <div class="form-group col-sm-12">
                                 <label for="">ธนาคาร</label>
                                 <p  class="form-control" >{{ $show->bank_name }}</p>
                             </div>
-                            <div class="form-group col-sm-6">
+                            <div class="form-group col-sm-12">
                                 <label for="">สาขา</label>
                                 <p  class="form-control" >{{ $show->bank_branch }}</p>
                             </div>
