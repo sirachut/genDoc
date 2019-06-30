@@ -12,7 +12,7 @@
                 <legend class="scheduler-border"><h4>ใบเบิกพัสดุ</h4></legend>
 
                 <div class="tab-content" id="v-pills-tabContent">
-                    <div class="tab-pane fade " id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                    <div class="tab-pane fade " id="seven_cover" role="tabpanel" aria-labelledby="seven_cover-tab">
                         <div class="row col-sm-12">
                             <div class="col-sm-12">
                                 <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
@@ -22,7 +22,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                    <div class="tab-pane fade show active" id="seven_first" role="tabpanel" aria-labelledby="seven_first-tab">
                             <div class="row col-sm-12">
                                     <div class="col-sm-12">
                                         <p class="text-center"><b>ใบเบิกพัสดุ</b></p>
@@ -65,10 +65,10 @@
                                     </div>
                                 </div>
                     </div>
-                    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+                    <div class="tab-pane fade" id="seven_two" role="tabpanel" aria-labelledby="seven_two-tab">
                         ...
                     </div>
-                    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+                    <div class="tab-pane fade" id="seven_three" role="tabpanel" aria-labelledby="seven_three-tab">
                         ...
                     </div>
 
@@ -82,10 +82,10 @@
                     <legend class="scheduler-border"><p style="font-size:18px">เลือกดูข้อมูล</p></legend>
                 
                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                        <a class="nav-link" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">หน้าปก</a>
-                        <a class="nav-link active" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">หน้าที่ 1</a>
-                        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">หน้าที่ 2 </a>
-                        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">หน้าที่ 3</a>
+                        <a class="nav-link" id="seven_cover-tab" data-toggle="pill" href="#seven_cover" role="tab" aria-controls="seven_cover" aria-selected="true">หน้าปก</a>
+                        <a class="nav-link active" id="seven_first-tab" data-toggle="pill" href="#seven_first" role="tab" aria-controls="seven_first" aria-selected="false">หน้าที่ 1</a>
+                        <a class="nav-link" id="seven_two-tab" data-toggle="pill" href="#seven_two" role="tab" aria-controls="seven_two" aria-selected="false">หน้าที่ 2 </a>
+                        <a class="nav-link" id="seven_three-tab" data-toggle="pill" href="#seven_three" role="tab" aria-controls="seven_three" aria-selected="false">หน้าที่ 3</a>
                     </div>
                         
             </fieldset>

@@ -142,7 +142,7 @@
             <div class="tab-pane fade " id="show_detail" role="tabpanel" aria-labelledby="v-pills-home-tab"><br>
                 @include('showtype/show_detail.app')
             </div>
-            <div class="tab-pane fade" id="show_doc" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+            <div class="tab-pane fade " id="show_doc" role="tabpanel" aria-labelledby="v-pills-profile-tab">
                 @include('showtype/show_doc.app')
             </div>
             <div class="tab-pane fade show active" id="list" role="tabpanel" aria-labelledby="v-pills-messages-tab">
