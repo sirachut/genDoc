@@ -435,7 +435,7 @@
 
                         
                             
-                            @for ($j = 32; $j < 61 ; $j++)
+                            @for ($j = 32; $j < $count[0]->getCount ; $j++)
 
                             @php
                                 $getsum = $product_Q[$j]->product_price * $product_Q[$j]->product_amount;
