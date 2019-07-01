@@ -40,7 +40,7 @@
                             </p>
                             <p class="text-left" style="text-indent:50px">
                                 ผู้ตรวจรับพัสดุได้ตรวจรับงานเมื่อวันที่ {{ formatDateThai($show->project_dateget) }} แล้วปรากฏว่างานเสร็จเรียบร้อยถูกต้องตามใบสั่งซื้อทุกประการ เมื่อวันที่ {{ formatDateThai($show->project_dateget) }} 
-                                โดยส่งมอบเกินกำหนด 0 วัน คิดเป็นค่าปรับในอัตราร้อยละ 0.20 รวมเป็นเงินทั้งสิ้น {{ number_format($total[0]->getTotal, 2, '.', ',') }} 
+                                โดยส่งมอบเกินกำหนด 0 วัน คิดเป็นค่าปรับในอัตราร้อยละ 0.20 รวมเป็นเงินทั้งสิ้น 0 บาท
                                 จึงออกหนังสือสำคัญฉบับนี้ให้ไว้ วันที่ {{ formatDateThai($show->project_dateget) }} ผู้ขายควรได้รับเงินเป็นจำนวนทั้งสิ้น {{ number_format($total[0]->getTotal, 2, '.', ',') }} บาท ({{ convert($total[0]->getTotal ) }}) ตามใบสั่งซื้อ
                             </p>
                             <p class="text-left" style="text-indent:50px">
