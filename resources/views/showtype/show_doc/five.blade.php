@@ -2,7 +2,7 @@
     $countitem=1;
 @endphp
 
-<div class="container">
+<div class="container" style="font-size:14px">
 
     @if ($count[0]->getCount < 18 )
 
