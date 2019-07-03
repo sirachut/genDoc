@@ -1841,7 +1841,7 @@
                         <a class="nav-link" id="eight_twopage-tab" data-toggle="pill" href="#eight_twopage" role="tab" aria-controls="eight_twopage" aria-selected="false">รายการ 21 - 40</a>
                         <a class="nav-link" id="eight_threepage-tab" data-toggle="pill" href="#eight_threepage" role="tab" aria-controls="eight_threepage" aria-selected="false">รายการ 41 - 60</a>
                         <a class="nav-link" id="eight_fourpage-tab" data-toggle="pill" href="#eight_fourpage" role="tab" aria-controls="eight_fourpage" aria-selected="false">รายการ 61 - 80</a>
-                        <a class="nav-link" id="eight_fivepage-tab" data-toggle="pill" href="#eight_fivepage" role="tab" aria-controls="eight_fivepage" aria-selected="false">รายการ 61 - {{ $count[0]->getCount }}</a>
+                        <a class="nav-link" id="eight_fivepage-tab" data-toggle="pill" href="#eight_fivepage" role="tab" aria-controls="eight_fivepage" aria-selected="false">รายการ 81 - {{ $count[0]->getCount }}</a>
 
 
                     </div>
