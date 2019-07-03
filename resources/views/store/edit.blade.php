@@ -82,7 +82,7 @@
             <div class="col-sm-4" style="padding: 15px;">
                 <div class="card col-sm-12" style="padding:15px">
                     <h4>ธนาคาร</h4>
-                    <small class="form-text text-muted">หมายเหตุ : รายละเอียดธนาคาร ของ {{ $value->store_name }}</small><hr>
+                    <small class="form-text text-muted">หมายเหตุ : รายละเอียดธนาคารของห้างร้าน</small><hr>
                     <div class="row">
                         <div class="form-group col-sm-12">
                             <label for="">ชื่อบัญชี</label>

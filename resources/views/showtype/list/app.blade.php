@@ -73,19 +73,19 @@
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="product_price">{{ __('ราคา (บาท)') }} </label>
-                                <input type="number" class="form-control" name="product_price" min="1" autocomplete="off">
+                                <input type="number" class="form-control" name="product_price" min="1" autocomplete="off" required>
             
                             </div>
 
                             <div class="form-group col-md-6">
                                 <label for="product_amount">{{ __('จำนวน') }} </label>
-                                <input type="number" class="form-control" name="product_amount" min="1" autocomplete="off">
+                                <input type="number" class="form-control" name="product_amount" min="1" autocomplete="off" required>
             
                             </div>
             
                             <div class="form-group col-md-6">
                                 <label for="product_unitname">{{ __('ลักษณะนาม') }} </label>
-                                <input type="text" class="form-control" name="product_unitname" autocomplete="off">
+                                <input type="text" class="form-control" name="product_unitname" autocomplete="off" required>
             
                             </div>
 

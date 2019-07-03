@@ -121,9 +121,9 @@
                                 <tr>
                                     <th>#</th>
                                     <th>กิจกรรม/โครงการ</th>
-                                    <th>เลขที่จัดซื้อ</th>
-                                    <th>สร้างเมื่อ</th>
-                                    <th>ยอดรวม</th>
+                                    <th>ฝ่ายงาน</th>
+                                    <th>กลุ่มสาระ</th>
+                                    <th>เมื่อวันที่</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -132,15 +132,9 @@
                                     <tr>
                                         <td>{{ $i++ }}</td>
                                         <td>{{ $project->project_name }}</td>
-                                        <td>{{ $project->project_number }}</td>
-                                        <td>
-                                            @php
-                                                echo App\Http\Controllers\DocumentController::DateThai($project->project_datein);
-                                            @endphp
-                                        </td>
-
-                                        
-                                        <td></td>
+                                        <td>{{ $project->project_department }}</td>
+                                        <td>{{ $project->project_subject }}</td> 
+                                        <td>{{ formatDateThai($project->created_at) }}</td>
                                         <td width="10%">
                                             <a href="{{ route('home.show', $project->project_id) }}" class="btn btn-info btn-sm"><i class="fas fa-file-invoice"> ดูรายละเอียด</i></a>
                                         </td>
