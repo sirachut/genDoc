@@ -127,8 +127,19 @@
         </div>
 
         <div class="col-sm-3">
+
+            <div class="container"><br>
+                <a href="{{ route('two.show',$show->project_id) }}" class="btn btn-success form-control" target="_blank"><i class="fas fa-print"></i> ปริ้นรายการนี้</a>
+            </div><br>
+
             <fieldset class="scheduler-border">
+
+
                 <legend class="scheduler-border"><p style="font-size:18px">ข้อมูลในเอกสารนี้</p></legend>
+
+             
+
+
 
                 <div class="form-group">   
                     <label for="">
@@ -189,6 +200,8 @@
                 </div>   
             </fieldset>
         </div>
+
+        
         
     </div>
 </div>

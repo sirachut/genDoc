@@ -91,6 +91,7 @@
         <a class="item nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#show_doc" role="tab" aria-controls="show_doc" aria-selected="false">
             <i class="far fa-file-alt"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ดูแบบเอกสาร
         </a>
+     
     </div>
 @else
     <div class="left nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -106,6 +107,7 @@
         <a class="item nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#list" role="tab" aria-controls="list" aria-selected="true">
             <i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; รายการสินค้า
         </a>
+        
     </div>
     
 @endif

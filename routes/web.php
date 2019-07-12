@@ -35,6 +35,14 @@ Route::resource('/usermanage', 'UserManageController');
 
 Route::resource('/profile', 'ProfileController');
 
+Route::resources([
+    '/two' => 'Prints\TwoController',
+    '/three' => 'Prints\ThreeController',
+    '/four' => 'Prints\FourController',
+    '/five' => 'Prints\FiveController'
+]);
+
+
 
 
 
