@@ -44,6 +44,7 @@
     @endphp
 
     @if ($count[0]->getCount < 18)
+    
         <div class="container"><br><br>
             <div class="row">
 

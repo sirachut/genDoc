@@ -189,7 +189,10 @@
                 </fieldset>
             </div>
 
-            <div class="col-sm-3"><br>
+            <div class="col-sm-3">
+                <div class="container"><br>
+                    <a href="{{ route('seven.show',$show->project_id) }}" class="btn btn-success form-control" target="_blank"><i class="fas fa-print"></i> ปริ้นรายการนี้</a>
+                </div><br>
                 <div class="card sticky" style="padding:10px"> 
                     <h6>เลือกดูข้อมูล</h6>
 
@@ -393,7 +396,10 @@
                 </fieldset>
             </div>
 
-            <div class="col-sm-3"><br>
+            <div class="col-sm-3">
+                <div class="container"><br>
+                    <a href="{{ route('seven.show',$show->project_id) }}" class="btn btn-success form-control" target="_blank"><i class="fas fa-print"></i> ปริ้นรายการนี้</a>
+                </div><br>
                 <div class="card sticky" style="padding:10px"> 
                     <h6>เลือกดูข้อมูล</h6>
 
@@ -688,7 +694,10 @@
                 </fieldset>
             </div>
 
-            <div class="col-sm-3"><br>
+            <div class="col-sm-3">
+                <div class="container"><br>
+                    <a href="{{ route('seven.show',$show->project_id) }}" class="btn btn-success form-control" target="_blank"><i class="fas fa-print"></i> ปริ้นรายการนี้</a>
+                </div><br>
                 <div class="card sticky" style="padding:10px"> 
                     <h6>เลือกดูข้อมูล</h6>
 
@@ -985,7 +994,10 @@
                 </fieldset>
             </div>
 
-            <div class="col-sm-3"><br>
+            <div class="col-sm-3">
+                <div class="container"><br>
+                    <a href="{{ route('seven.show',$show->project_id) }}" class="btn btn-success form-control" target="_blank"><i class="fas fa-print"></i> ปริ้นรายการนี้</a>
+                </div><br>
                 <div class="card sticky" style="padding:10px"> 
                     <h6>เลือกดูข้อมูล</h6>
 
@@ -1377,7 +1389,10 @@
                 </fieldset>
             </div>
 
-            <div class="col-sm-3"><br>
+            <div class="col-sm-3">
+            <div class="container"><br>
+                <a href="{{ route('seven.show',$show->project_id) }}" class="btn btn-success form-control" target="_blank"><i class="fas fa-print"></i> ปริ้นรายการนี้</a>
+            </div><br>
                 <div class="card sticky" style="padding:10px"> 
                     <h6>เลือกดูข้อมูล</h6>
 
@@ -1771,7 +1786,10 @@
                 </fieldset>
             </div>
 
-            <div class="col-sm-3"><br>
+            <div class="col-sm-3">
+            <div class="container"><br>
+                <a href="{{ route('seven.show',$show->project_id) }}" class="btn btn-success form-control" target="_blank"><i class="fas fa-print"></i> ปริ้นรายการนี้</a>
+            </div><br>
                 <div class="card sticky" style="padding:10px"> 
                     <h6>เลือกดูข้อมูล</h6>
 
@@ -2260,7 +2278,10 @@
                 </fieldset>
             </div>
 
-            <div class="col-sm-3"><br>
+            <div class="col-sm-3">
+            <div class="container"><br>
+                <a href="{{ route('seven.show',$show->project_id) }}" class="btn btn-success form-control" target="_blank"><i class="fas fa-print"></i> ปริ้นรายการนี้</a>
+            </div><br>
                 <div class="card sticky" style="padding:10px"> 
                     <h6>เลือกดูข้อมูล</h6>
 
@@ -2750,7 +2771,10 @@
                 </fieldset>
             </div>
 
-            <div class="col-sm-3"><br>
+            <div class="col-sm-3">
+            <div class="container"><br>
+                <a href="{{ route('seven.show',$show->project_id) }}" class="btn btn-success form-control" target="_blank"><i class="fas fa-print"></i> ปริ้นรายการนี้</a>
+            </div><br>
                 <div class="card sticky" style="padding:10px"> 
                     <h6>เลือกดูข้อมูล</h6>
 
