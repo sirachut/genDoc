@@ -37,29 +37,33 @@ class DocumentController extends Controller
 
             $Project_n_Queries = DB::table('projects')
             ->join('users','projects.id_fk', '=' ,'users.id')
+            ->orderBy('created_at', 'desc')
             ->select(
                 'projects.*', 
                 'users.name',
             )   
             ->get();
 
-
             $StoreQueries = StoreModel::all();
+
             return view('documents.home')
             ->with(['project_n_Q' => $Project_n_Queries])
             ->with(['store_Q' => $StoreQueries]);
         }else {
 
-            $Project_n_Queries = ProjectModel::all()
-            ->where('project_status','n')
-            ->where('id_fk', $user->id);
+            $Project_n_Queries = ProjectModel::where('project_status','n')
+                ->where('id_fk', $user->id)
+                ->orderBy('created_at', 'desc')
+                ->get();
 
-            $Project_d_Queries = ProjectModel::all()
-                ->where('project_status','d')
-                ->where('id_fk', $user->id);
+            $Project_d_Queries = ProjectModel::where('project_status','d')
+                ->where('id_fk', $user->id)
+                ->orderBy('created_at', 'desc')
+                ->get();
+
+            $StoreQueries = StoreModel::orderBy('created_at', 'desc')
+            ->get();
                 
-            $StoreQueries = StoreModel::all()
-                ->where('id_fk', $user->id);
                 
             return view('documents.home')
                 ->with(['project_n_Q' => $Project_n_Queries])

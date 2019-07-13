@@ -351,7 +351,7 @@
         <div class="container">
                 
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-12"><br><br>
                     <table class="table table-bordered table-sm" style="font-size:16px">
                         <thead>
                             <tr>
@@ -630,7 +630,7 @@
         <div class="container">
                 
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-12"><br><br>
                     <table class="table table-bordered table-sm" style="font-size:16px">
                         <thead>
                             <tr>
@@ -909,7 +909,7 @@
         <div class="container">
                 
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-12"><br><br>
                     <table class="table table-bordered table-sm" style="font-size:16px">
                         <thead>
                             <tr>
@@ -1248,7 +1248,7 @@
         <div class="container">
                 
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-12"><br><br>
                     <table class="table table-bordered table-sm" style="font-size:16px">
                         <thead>
                             <tr>
@@ -1587,7 +1587,7 @@
         <div class="container">
                 
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-12"><br><br>
                     <table class="table table-bordered table-sm" style="font-size:16px">
                         <thead>
                             <tr>
