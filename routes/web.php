@@ -39,7 +39,8 @@ Route::resources([
     '/two' => 'Prints\TwoController',
     '/three' => 'Prints\ThreeController',
     '/four' => 'Prints\FourController',
-    '/five' => 'Prints\FiveController'
+    '/five' => 'Prints\FiveController',
+    '/six' => 'Prints\SixController',
 ]);
 
 

@@ -51,9 +51,47 @@ class SixController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($project_id)
     {
-        //
+        $count = DB::table('products')
+        ->select(DB::raw('COUNT(project_fk) as getCount'))
+        ->where('project_fk' , $project_id)
+        ->get();
+
+        $queries = DB::table('projects')
+        ->where('projects.project_id',$project_id)  
+        ->join('users','projects.id_fk', '=' ,'users.id')
+        ->join('stores','projects.store_fk', '=' , 'stores.store_id')
+        ->select(
+            'projects.*', 
+            'users.name',
+            'stores.store_name',
+            'stores.store_tel',
+            'stores.store_teletex',
+            'stores.store_address',
+            'stores.store_employee',
+            'stores.store_employeeNumber',
+            'stores.bank_branch',
+            'stores.bank_number',
+            'stores.bank_account',
+            'stores.bank_name',
+        )   
+        ->first();
+
+        $products = ProductModel::where('project_fk',$project_id)->get();
+
+        $total = DB::table('products')
+                    ->select(DB::raw('SUM(product_amount * product_price) as getTotal'))
+                    ->where('project_fk' , $project_id)
+                    ->get();
+        
+
+        return view('print.six')
+            ->with(['count' => $count])
+            ->with(['total' => $total])
+            ->with(['show' => $queries])
+            ->with(['product_Q' => $products])
+            ->with('project_id',$project_id);
     }
 
     /**
