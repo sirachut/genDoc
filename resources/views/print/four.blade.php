@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>3.รายงานเรียนหัวหน้าเจ้าหน้าที่</title>
     @include('layouts.style')
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -33,13 +33,16 @@
             margin-bottom: 6px;   
             padding-left: 2.5em; 
         }
+        /* @page {
+            size: A4;
+        } */
     </style>
 </head>
 
 <body>
 <div class="row">
     <div class="container">
-        <div class="col-sm-12">
+        <div class="col-sm-12"><br>
            
                 <img class="kud" src="{{ URL::asset('images/kud.JPG') }}" alt="" width="auto" style="max-width: 70px;"><br>
                 

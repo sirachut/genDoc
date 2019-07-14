@@ -55,7 +55,7 @@
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="project_datein">{{ __('วันเดือนปี ที่จัดซื้อ') }}<span style="color:red;">*</span></label>
-                                    <input type="date" name="project_datein" class="form-control" value="{{ $value->project_datein }}"> 
+                                    <input type="date" name="project_datein" class="form-control" value="{{ $value->project_datein }}" required> 
                                     <small id="project_datein" class="form-text text-muted">คำอธิบาย : วันเดือนปี ที่เอกสารถูกเขียนขึ้น</small>
                                 </div> 
                                 <div class="form-group col-md-4">
@@ -71,6 +71,11 @@
                                     </select>
                                     <small id="project_getday" class="form-text text-muted">คำอธิบาย : เพื่อกำหนดวันรับรายการของโครงการ</small>
                                 </div>
+                                <div class="form-group col-md-4">
+                                    <label for="project_datein">{{ __('วันเดือนปี ที่ตรวจรับ') }}<span style="color:red;">*</span></label>
+                                    <input type="date" name="project_dateget" class="form-control" value="{{ $value->project_dateget }}" required> 
+                                    <small id="project_dateget" class="form-text text-muted">คำอธิบาย : วันเดือนปี รับสินค้า</small>
+                                </div> 
                                 <div class="form-group col-md-4">
                                     <label for="project_number">{{ __('เลขที่จัดซื้อ') }}<span style="color:red;">*</span></label>
                                     <input type="text" id="project_number" class="form-control" value="{{ $value->project_number}}" name="project_number" autocomplete="off">
@@ -176,7 +181,7 @@
                                 <input type="text" id="id_fk" class="form-control" name="id_fk" value="{{ $user->id }}" hidden>
                                 <input type="text" id="bill_number" class="form-control" name="bill_number" value="ยังไม่ได้ระบุ" hidden>
                                 <input type="text" id="project_status" class="form-control" name="project_status" value="n" hidden>
-                                <input type="datetime" class="form-control" data-toggle="datepicker2" name="project_dateget" hidden >
+                                {{-- <input type="datetime" class="form-control" data-toggle="datepicker2" name="project_dateget" hidden > --}}
                                 {{-- <input type="date" name="project_dateget" value="0000-00-00 00:00:00" hidden> --}}
 
                             </div>

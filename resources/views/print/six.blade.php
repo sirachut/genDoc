@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>5.ใบตรวจจรับพัสดุ</title>
     @include('layouts.style')
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">

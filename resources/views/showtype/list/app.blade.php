@@ -60,10 +60,11 @@
             </div>
         </div>
         <div class="col-sm-3">
+            
             <div class="card sticky" style="padding:10px">
                 <h5>เพิ่มรายการสินค้า</h5> <hr>
                 <form action="{{ route('ajaxproducts.store') }}" method="POST">
-                @csrf
+                    @csrf
                     <div class="form-row">
                     
                             <div class="form-group col-md-12">
@@ -94,13 +95,26 @@
                             {{-- hidden --}}
                             <input type="text" name="project_fk" value="{{ $show->project_id }}" hidden>
                             {{-- {{ Auth::user()->id }} --}}
-                        
+                            
+                            
                     </div>
 
                 </form>
+                <div class="form-row">
+                        <div class="form-group col-md-6"><br>
+                            <label for="product_price">{{ __('จำนวนรายการ') }} </label>
+                            <input type="text" class="form-control" value="{{ ($count[0]->getCount) }} รายการ" readonly>
+        
+                        </div>
+                        <div class="form-group col-md-6"><br>
+                            <label for="product_price">{{ __('ยอดสุทธิ') }} </label>
+                            <input type="text" class="form-control" value="{{ number_format($total[0]->getTotal, 2, '.', ',') }} บาท" readonly>
+        
+                        </div>
+                    </div>
                     
-                
-            </div>
+            </div><br>
+            
 
         </div>
     </div>
@@ -116,7 +130,7 @@
 <script>
     $(document).ready(function() {
         $('#project_datatable').DataTable({
-            "ordering": false,
+            "order": [[ 0, "desc" ]]
         });
     } );
 </script>
