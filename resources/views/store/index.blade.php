@@ -36,7 +36,7 @@
         <div class="row col-sm-12">
             <div class="col-sm-x">
                 <h4>ตารางแสดงร้านค้า/ห้างร้าน </h4> 
-                @if (Auth::user()->name == "admin")
+                @if (Auth::user()->status == "admin")
                     <small>สามารถกดดูรายละเอียดเพิ่มเติมที่ "รายละเอียด" </small>
                     
                 @else
@@ -56,7 +56,7 @@
                         <th>ชื่อห้างร้าน</th>
                         <th>เบอร์โทรติดต่อ</th>
                         <th>ที่อยู่</th>
-                        @if (Auth::user()->name == "admin")
+                        @if (Auth::user()->status == "admin")
                             <th>สร้างโดย</th>
                         @endif
                         <th class="text-right">Actions</th>
@@ -75,7 +75,7 @@
                         <td>{{ $item->store_name }}</td>
                         <td>{{ $item->store_tel }}</td>
                         <td width="35%">{{ $item->store_address }}</td>
-                        @if (Auth::user()->name == "admin")
+                        @if (Auth::user()->status == "admin")
                             <td>{{ $item->name }}</td>
                         @endif
 
@@ -84,7 +84,7 @@
                             @method('DELETE')
                             <td class="td-actions text-right">
 
-                                @if (Auth::user()->name == "admin")
+                                @if (Auth::user()->status == "admin")
                                     <a href="{{ route('storemanage.show',$item->store_id) }}" class="btn btn-info btn-just-icon btn-sm">
                                         <i class="fas fa-file-invoice"></i> รายละเอียด                                    
                                     </a>

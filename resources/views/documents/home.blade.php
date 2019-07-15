@@ -39,7 +39,7 @@
                 <div class="row col-sm-12">
                     <div class="col-sm-x">
                         <h4>ตารางแสดงโครงการ/กิจกรรมการสั่งซื้อ</h4> 
-                        @if (Auth::user()->name == "admin")
+                        @if (Auth::user()->status == "admin")
                             <small>สามารถกดดูรายละเอียดเพิ่มเติมที่ "รายละเอียด"</small>
 
                         @else

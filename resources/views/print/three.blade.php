@@ -118,12 +118,12 @@
                     </table>
                     <br><br>
                     <div class="row col-sm-12">
-                        <div class="col-sm-6">
+                        <div class="col-sm-6"><br>
                             <p class="text-center">(ลงชื่อ)..............................................................เจ้าหน้าที่</p>
                             <p class="text-center">{{ $show->parcel_name }}</p>
                             <p class="text-center">วันที่ {{ formatDateThai($show->project_datein) }}</p>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-6"><br>
                             <p class="text-center">(ลงชื่อ)..................................................หัวหน้าเจ้าหน้าที่</p>
                             <p class="text-center">{{ $show->parcelLeader_name }}</p>
                             <p class="text-center">วันที่ {{ formatDateThai($show->project_datein) }}</p>
@@ -288,12 +288,12 @@
                     </table><br><br>
 
                     <div class="row col-sm-12">
-                        <div class="col-sm-6">
+                        <div class="col-sm-6"><br>
                             <p class="text-center">(ลงชื่อ)..............................................................เจ้าหน้าที่</p>
                             <p class="text-center">{{ $show->parcel_name }}</p>
                             <p class="text-center">วันที่ {{ formatDateThai($show->project_datein) }}</p>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-6"><br>
                             <p class="text-center">(ลงชื่อ)..................................................หัวหน้าเจ้าหน้าที่</p>
                             <p class="text-center">{{ $show->parcelLeader_name }}</p>
                             <p class="text-center">วันที่ {{ formatDateThai($show->project_datein) }}</p>
@@ -459,12 +459,12 @@
                     </table><br><br>
 
                     <div class="row col-sm-12">
-                        <div class="col-sm-6">
+                        <div class="col-sm-6"><br>
                             <p class="text-center">(ลงชื่อ)..............................................................เจ้าหน้าที่</p>
                             <p class="text-center">{{ $show->parcel_name }}</p>
                             <p class="text-center">วันที่ {{ formatDateThai($show->project_datein) }}</p>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-6"><br>
                             <p class="text-center">(ลงชื่อ)..................................................หัวหน้าเจ้าหน้าที่</p>
                             <p class="text-center">{{ $show->parcelLeader_name }}</p>
                             <p class="text-center">วันที่ {{ formatDateThai($show->project_datein) }}</p>
@@ -695,12 +695,12 @@
                     </table><br><br>
 
                     <div class="row col-sm-12">
-                        <div class="col-sm-6">
+                        <div class="col-sm-6"><br>
                             <p class="text-center">(ลงชื่อ)..............................................................เจ้าหน้าที่</p>
                             <p class="text-center">{{ $show->parcel_name }}</p>
                             <p class="text-center">วันที่ {{ formatDateThai($show->project_datein) }}</p>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-6"><br>
                             <p class="text-center">(ลงชื่อ)..................................................หัวหน้าเจ้าหน้าที่</p>
                             <p class="text-center">{{ $show->parcelLeader_name }}</p>
                             <p class="text-center">วันที่ {{ formatDateThai($show->project_datein) }}</p>
@@ -947,12 +947,12 @@
                     </table>
 
                     <div class="row col-sm-12">
-                        <div class="col-sm-6">
+                        <div class="col-sm-6"><br>
                             <p class="text-center">(ลงชื่อ)..............................................................เจ้าหน้าที่</p>
                             <p class="text-center">{{ $show->parcel_name }}</p>
                             <p class="text-center">วันที่ {{ formatDateThai($show->project_datein) }}</p>
                         </div>
-                        <div class="col-sm-6">
+                        <div class="col-sm-6"><br>
                             <p class="text-center">(ลงชื่อ)..................................................หัวหน้าเจ้าหน้าที่</p>
                             <p class="text-center">{{ $show->parcelLeader_name }}</p>
                             <p class="text-center">วันที่ {{ formatDateThai($show->project_datein) }}</p>

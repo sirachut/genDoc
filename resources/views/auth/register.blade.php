@@ -86,6 +86,8 @@
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
+                            <input type="text" name="status" value="user" hidden>
+
                         </div>
 
                         <div class="form-group row mb-0">

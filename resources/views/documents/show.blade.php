@@ -80,7 +80,7 @@
     }
 </style>
 
-@if (Auth::user()->name == "admin")
+@if (Auth::user()->status == "admin")
     <div class="left nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
         <a class="item nav-link" data-toggle="pill" href="#">
             <i class="fas fa-list-ul"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -130,7 +130,7 @@
 <div class="container">
 
 
-    @if (Auth::user()->name == "admin")
+    @if (Auth::user()->status == "admin")
         <div class="tab-content" id="v-pills-tabContent">
             <div class="tab-pane fade show active" id="show_detail" role="tabpanel" aria-labelledby="v-pills-home-tab"><br>
                 @include('showtype/show_detail.app')

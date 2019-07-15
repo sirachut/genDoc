@@ -13,7 +13,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    @if (Auth::user()->name == "admin")
+                    @if (Auth::user()->status == "admin")
                         <li class="nav-item active">
                             <a class="nav-link" href="{{ url('/home') }}">เอกสารทั้งหมดในระบบ <span class="sr-only">(current)</span></a>
                         </li>
@@ -67,7 +67,7 @@
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                               @if ((Auth::user()->name == "admin"))
+                               @if ((Auth::user()->status == "admin"))
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                         document.getElementById('logout-form').submit();">
                                         {{ __('ออกจากระบบ') }}
