@@ -106,6 +106,9 @@
         </a>
         <a class="item nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#list" role="tab" aria-controls="list" aria-selected="true">
             <i class="fas fa-shopping-cart"></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; รายการสินค้า
+        </a> 
+        <a class="item nav-link" data-toggle="modal" data-target="#setting_modal" style="color:white">
+            <i class="fas fa-cog"></i></i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ตั้งค่าโครงการ
         </a>
         
     </div>
@@ -153,7 +156,7 @@
         </div>
     @endif
    
-
+    @include('showtype/status.app')
     
 </div>
 

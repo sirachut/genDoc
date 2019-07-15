@@ -101,12 +101,12 @@
 
                 </form>
                 <div class="form-row">
-                        <div class="form-group col-md-6"><br>
+                        <div class="form-group col-md-12"><br>
                             <label for="product_price">{{ __('จำนวนรายการ') }} </label>
                             <input type="text" class="form-control" value="{{ ($count[0]->getCount) }} รายการ" readonly>
         
                         </div>
-                        <div class="form-group col-md-6"><br>
+                        <div class="form-group col-md-12">
                             <label for="product_price">{{ __('ยอดสุทธิ') }} </label>
                             <input type="text" class="form-control" value="{{ number_format($total[0]->getTotal, 2, '.', ',') }} บาท" readonly>
         

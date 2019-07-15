@@ -25,7 +25,6 @@ Route::resources([
 
 Route::resource('/project_status', 'ChangeStatusProjectController');
 
-
 Route::resource('/storemanage', 'StoreManageController');
 
 Route::resource('ajaxproducts','ProductAjaxController');

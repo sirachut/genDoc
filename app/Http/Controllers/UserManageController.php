@@ -20,7 +20,7 @@ class UserManageController extends Controller
     public function index()
     {
         $getUser = DB::table('users')
-        ->whereNotIn('id', [2])
+        ->where('status' ,'user')
         ->get();
 
         return View('admin.usermanage')
@@ -64,8 +64,7 @@ class UserManageController extends Controller
             ->first();
 
         $getProject = ProjectModel::all()
-            ->where('id_fk',$id)
-            ->where('project_status','n');
+            ->where('id_fk',$id);
 
         $getStore = StoreModel::all()
             ->where('store_id_fk',$id);

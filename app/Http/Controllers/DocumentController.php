@@ -56,9 +56,32 @@ class DocumentController extends Controller
                 ->orderBy('created_at', 'desc')
                 ->get();
 
-            $Project_public = ProjectModel::where('project_status','public')
-                ->orderBy('created_at', 'desc')
-                ->get();
+            // $Project_public = ProjectModel::where('project_status','public')
+            //     ->orderBy('created_at', 'desc')
+            //     ->get();
+
+            $Project_public = DB::table('projects')
+            ->orderBy('updated_at', 'desc')
+            ->where('projects.project_status', 'public')  
+            ->join('users','projects.id_fk', '=' ,'users.id')
+            ->join('stores','projects.store_fk', '=' , 'stores.store_id')
+            ->select(
+                'projects.*', 
+                'users.name',
+                'users.fullname',
+                'users.email',
+                'stores.store_name',
+                'stores.store_tel',
+                'stores.store_teletex',
+                'stores.store_address',
+                'stores.store_employee',
+                'stores.store_employeeNumber',
+                'stores.bank_branch',
+                'stores.bank_number',
+                'stores.bank_account',
+                'stores.bank_name',
+            )   
+            ->get();
 
             $StoreQueries = StoreModel::orderBy('created_at', 'desc')
             ->get();

@@ -23,8 +23,7 @@ class ChangeStatusProjectController extends Controller
      */
     public function index()
     {
-        return view('documents.status');
-        
+       
     }
 
     /**
@@ -83,7 +82,7 @@ class ChangeStatusProjectController extends Controller
         $value ->project_status=$request->get('project_status');
         $value->save();
 
-        return redirect('home');
+        return redirect()->back();
 
         
     }
