@@ -116,7 +116,7 @@
                             {{-- Hidden --}}
                             <div class="form-group col-md-12">
                                 <input type="text" id="id_fk" class="form-control" name="id_fk" value="{{ $user->id }}" hidden>
-                                <input type="text" id="project_status" class="form-control" name="project_status" value="n" hidden>
+                                <input type="text" id="project_status" class="form-control" name="project_status" value="private" hidden>
                             </div>
 
 

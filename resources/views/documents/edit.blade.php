@@ -179,10 +179,8 @@
                                      {{-- Hidden --}}
                                 <div class="form-group col-md-12">
                                 <input type="text" id="id_fk" class="form-control" name="id_fk" value="{{ $user->id }}" hidden>
-                                <input type="text" id="bill_number" class="form-control" name="bill_number" value="ยังไม่ได้ระบุ" hidden>
-                                <input type="text" id="project_status" class="form-control" name="project_status" value="n" hidden>
-                                {{-- <input type="datetime" class="form-control" data-toggle="datepicker2" name="project_dateget" hidden > --}}
-                                {{-- <input type="date" name="project_dateget" value="0000-00-00 00:00:00" hidden> --}}
+                                <input type="text" id="project_status" class="form-control" name="project_status" value="{{ $value->project_status }}" hidden>
+                               
 
                             </div>
     
