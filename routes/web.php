@@ -23,6 +23,9 @@ Route::resources([
     '/home' => 'DocumentController',
 ]);
 
+Route::resource('/project_status', 'ChangeStatusProjectController');
+
+
 Route::resource('/storemanage', 'StoreManageController');
 
 Route::resource('ajaxproducts','ProductAjaxController');

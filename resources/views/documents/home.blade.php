@@ -52,22 +52,30 @@
                     </div>
                 </div>
 
-         
-                
             </div>
         </div>
         
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
+
+        @if (Auth::user()->status == "admin")
             <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#new_doc">โครงการ/กิจกรรม</a>
+                <a class="nav-link active" data-toggle="tab" href="#project_private">โครงการ/กิจกรรมทั้งหมด</a>
             </li>
+        @else
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#project_private"><i class="fas fa-file-contract">&nbsp; </i>โครงการ/กิจกรรมของคุณ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#project_public"><i class="fas fa-share-alt-square"> &nbsp; </i>โครงการ/กิจกรรมที่แชร์ร่วมกัน</a>
+            </li>
+        @endif
          
         </ul>
 
         <!-- Tab panes -->
         <div class="tab-content">
-            <div id="new_doc" class="container tab-pane active" ><br>
+            <div id="project_private" class="container tab-pane active" ><br>
 
                 <div class="table-responsive">
                     <table class="table" id="project_datatable">
@@ -75,10 +83,12 @@
                             <tr>
                                 <th class="text-center">#</th>
                                 <th>ชื่อโครงการ</th>
+                                <th>เลขที่จัดซื้อ</th>
+
                                 <th>ฝ่ายงาน</th>
-                                <th>กลุ่มสาระ</th>
-                                <th>เมื่อวันที่</th>
-                                @if (Auth::user()->name == "admin")
+                                <th>สถานะ</th>
+                                
+                                @if (Auth::user()->status == "admin")
                                     <th>สร้างโดย</th>
                                 @endif
                                 <th class="text-right">Actions</th>
@@ -90,43 +100,133 @@
                                 $i=1;
                             @endphp
         
-                            @foreach ($project_n_Q as $item)
+                            @foreach ($Project_Queries as $item)
+                                
+                            <tr>
+                                <td width="3%" class="text-center">{{ $i++ }}</td>
+                                <td width="37%">{{ $item->project_name }}</td>
+                                <td>{{ $item->project_number }}</td>
+
+                                <td width="10%">{{ $item->project_department }}</td>
+                                <td width="10%">
+                                    <a class="btn btn-link" href="{{ route('project_status.show',$item->project_id) }}" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-share-alt-square"> &nbsp; </i>{{ $item->project_status }}</a>
+                                    @include('documents.status')
+                                </td>
+                                @if (Auth::user()->status == "admin")
+                                    <td>{{ $item->name }}</td>
+                                @endif
+
+                                
+                                    <td class="td-actions text-right">
+                                    <form action="{{ route('home.destroy',$item->project_id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                            @if (Auth::user()->status == "admin")
+                                                <a href="{{ route('home.show',$item->project_id) }}" class="btn btn-info btn-just-icon btn-sm">
+                                                    <i class="fas fa-file-invoice"></i> รายละเอียด                                    
+                                                </a>
+                                            @else
+                                                <a href="{{ route('home.show',$item->project_id) }}" class="btn btn-info btn-just-icon btn-sm">
+                                                    <i class="fas fa-file-invoice"></i> รายละเอียด                                    
+                                                </a>
+                                                
+                                                <a href="{{ route('home.edit',$item->project_id) }}" class="btn btn-success btn-just-icon btn-sm">
+                                                    <i class="fas fa-edit"></i> แก้ไข
+                                                </a>
+                                                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_modal"><i class="far fa-trash-alt"></i></button>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="delete_modal" tabindex="-1" role="dialog" aria-labelledby="delete_modal" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                            <h5 class="modal-title" id="delete_modal">ลบโครงการ/กิจกรรม</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                               คุณแน่ใจที่จะลบโครงการนี้จริงๆ หรือไม่?
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                                            <a href="#delete"><button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"> &nbsp; </i>ลบโครงการ</button></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        </form>
+
+                                    </td>
+                            </tr>
+        
+                            @endforeach  
+                        </tbody>
+                    </table>
+                </div>
+            
+            </div>
+
+            <div id="project_public" class="container tab-pane fade" ><br>
+
+                <div class="table-responsive">
+                    <table class="table" id="project_datatable">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th>ชื่อโครงการ</th>
+                                <th>เลขที่จัดซื้อ</th>
+
+                                <th>ฝ่ายงาน</th>
+                                <th>กลุ่มสาระ</th>
+                                
+                                @if (Auth::user()->status == "admin")
+                                    <th>สร้างโดย</th>
+                                @endif
+                                <th class="text-right">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        
+                            @php
+                                $i=1;
+                            @endphp
+        
+                            @foreach ($Project_Queries as $item)
                                 
                             <tr>
                                 <td class="text-center">{{ $i++ }}</td>
                                 <td>{{ $item->project_name }}</td>
+                                <td>{{ $item->project_number }}</td>
+
                                 <td>{{ $item->project_department }}</td>
                                 <td width="35%">{{ $item->project_subject }}</td>
-                                <td>  
-                                    @php
-                                        echo App\Http\Controllers\DocumentController::DateThai($item->project_datein);
-                                    @endphp
-                                </td>
-                                @if (Auth::user()->name == "admin")
+                                @if (Auth::user()->status == "admin")
                                     <td>{{ $item->name }}</td>
                                 @endif
         
-                                <form action="{{ route('home.destroy',$item->project_id) }}" method="POST">
-                                    @csrf
-                                    @method('DELETE')
+                                
                                     <td class="td-actions text-right">
+                                        <form action="{{ route('home.destroy',$item->project_id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                            @if (Auth::user()->status == "admin")
+                                                <a href="{{ route('home.show',$item->project_id) }}" class="btn btn-info btn-just-icon btn-sm">
+                                                    <i class="fas fa-file-invoice"></i> รายละเอียด                                    
+                                                </a>
+                                            @else
+                                                <a href="{{ route('home.show',$item->project_id) }}" class="btn btn-info btn-just-icon btn-sm">
+                                                    <i class="fas fa-file-invoice"></i> รายละเอียด                                    
+                                                </a>
+                                                
+                                                <a href="{{ route('home.edit',$item->project_id) }}" class="btn btn-success btn-just-icon btn-sm">
+                                                    <i class="fas fa-edit"></i> แก้ไข
+                                                </a>
+                                                <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+                                            @endif
+                                        </form>
 
-                                        @if (Auth::user()->name == "admin")
-                                            <a href="{{ route('home.show',$item->project_id) }}" class="btn btn-info btn-just-icon btn-sm">
-                                                <i class="fas fa-file-invoice"></i> รายละเอียด                                    
-                                            </a>
-                                        @else
-                                            <a href="{{ route('home.show',$item->project_id) }}" class="btn btn-info btn-just-icon btn-sm">
-                                                <i class="fas fa-file-invoice"></i> รายละเอียด                                    
-                                            </a>
-                                            
-                                            <a href="{{ route('home.edit',$item->project_id) }}" class="btn btn-success btn-just-icon btn-sm">
-                                                <i class="fas fa-edit"></i> แก้ไข
-                                            </a>
-                                            <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
-                                        @endif
                                     </td>
-                                </form>
                             </tr>
         
                             @endforeach  
@@ -149,6 +249,8 @@
             "ordering": false,
         });
     } );
+    
 </script>
+
 
 @endsection

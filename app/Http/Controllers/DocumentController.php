@@ -33,9 +33,9 @@ class DocumentController extends Controller
     {
         $user = Auth::user();
 
-        if ($user->name=="admin") {
+        if ($user->status=="admin") {
 
-            $Project_n_Queries = DB::table('projects')
+            $Project_Queries = DB::table('projects')
             ->join('users','projects.id_fk', '=' ,'users.id')
             ->orderBy('created_at', 'desc')
             ->select(
@@ -47,17 +47,16 @@ class DocumentController extends Controller
             $StoreQueries = StoreModel::all();
 
             return view('documents.home')
-            ->with(['project_n_Q' => $Project_n_Queries])
+            ->with(['Project_Queries' => $Project_Queries])
             ->with(['store_Q' => $StoreQueries]);
         }else {
 
-            $Project_n_Queries = ProjectModel::where('project_status','n')
-                ->where('id_fk', $user->id)
+            $Project_Queries = ProjectModel::
+                where('id_fk', $user->id)
                 ->orderBy('created_at', 'desc')
                 ->get();
 
-            $Project_d_Queries = ProjectModel::where('project_status','d')
-                ->where('id_fk', $user->id)
+            $Project_public = ProjectModel::where('project_status','public')
                 ->orderBy('created_at', 'desc')
                 ->get();
 
@@ -66,8 +65,8 @@ class DocumentController extends Controller
                 
                 
             return view('documents.home')
-                ->with(['project_n_Q' => $Project_n_Queries])
-                ->with(['project_d_Q' => $Project_d_Queries])
+                ->with(['Project_Queries' => $Project_Queries])
+                ->with(['Project_public' => $Project_public])
                 ->with(['store_Q' => $StoreQueries]);
         }
 
@@ -287,6 +286,14 @@ class DocumentController extends Controller
         return "$strDay $strMonthThai $strYear";
     }
 
+    public function update_status(Request $request, $id)
+    {
+        $value = \App\Models\ProjectModel::find($id);
+        $value ->project_status=$request->get('project_status');
+        $value->save();
+
+        return redirect('home');
+    }
 }
 
 

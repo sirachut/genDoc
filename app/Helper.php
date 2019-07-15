@@ -66,6 +66,4 @@
             }
             return $convert;
         }
-
-// $x = '543219';
-// echo $x.' => '.convert($x);
+        

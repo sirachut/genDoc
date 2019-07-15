@@ -79,11 +79,11 @@
                             <td>{{ $item->name }}</td>
                         @endif
 
-                        <form action="{{ route('storemanage.destroy',$item->store_id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
+                        
                             <td class="td-actions text-right">
-
+                            <form action="{{ route('storemanage.destroy',$item->store_id) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
                                 @if (Auth::user()->status == "admin")
                                     <a href="{{ route('storemanage.show',$item->store_id) }}" class="btn btn-info btn-just-icon btn-sm">
                                         <i class="fas fa-file-invoice"></i> รายละเอียด                                    
@@ -95,10 +95,31 @@
                                     <a href="{{ route('storemanage.edit',$item->store_id) }}" class="btn btn-success btn-just-icon btn-sm">
                                         <i class="fas fa-edit"></i> แก้ไข
                                     </a>
-                                    <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_modal_store"><i class="far fa-trash-alt"></i></button>
+                                     <!-- Modal -->
+                                     <div class="modal fade" id="delete_modal_store" tabindex="-1" role="dialog" aria-labelledby="delete_modal_store" aria-hidden="true">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                <h5 class="modal-title" id="delete_modal_store">ลบห้างร้าน</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    คุณแน่ใจที่จะลบห้างร้านนี้จริงๆ หรือไม่?
+                                                </div>
+                                                <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+                                                <a href="#delete"><button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"> &nbsp; </i>ลบห้างร้าน</button></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 @endif
+                            </form>
+
                             </td>
-                        </form>
                     </tr>
 
                     @endforeach  
@@ -244,17 +265,13 @@
     </form>
 </div>
 
-
-
-
-
-    <script>
-        $(document).ready(function() {
-            $('#store_datatable').DataTable({
-                "ordering": false,
-            });
-        } );
-    </script>
+<script>
+    $(document).ready(function() {
+        $('#store_datatable').DataTable({
+            "ordering": false,
+        });
+    } );
+</script>
 
 
 @endsection

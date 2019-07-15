@@ -22,7 +22,7 @@ class StoreManageController extends Controller
     {
         $user = Auth::user();
 
-        if ($user->name=="admin") {
+        if ($user->status=="admin") {
 
             $getStore = DB::table('stores')
             ->where('stores.status','s')
@@ -37,10 +37,10 @@ class StoreManageController extends Controller
             ->with('getStore',$getStore);
         }else {
            
-
-        $getStore = StoreModel::all()
-            ->where('store_id_fk', $user->id)
-            ->where('status','s');
+        $getStore = StoreModel::orderBy('created_at', 'desc')
+        ->where('store_id_fk', $user->id)
+        ->where('status','s')
+        ->get();
         
         return view('/store/index')
             ->with('getStore',$getStore);
@@ -173,11 +173,11 @@ class StoreManageController extends Controller
      */
     public function destroy($id)
     {
-        // $blog = StoreModel::find($id);
-        // $blog->delete();
-        DB::table('stores')
-            ->where('store_id', $id)
-            ->update(['status' => 'd']);
+        $blog = StoreModel::find($id);
+        $blog->update(['status' => 'd']);
+        // DB::table('stores')
+        //     ->where('store_id', $id)
+        //     ->update(['status' => 'd']);
             
         return redirect()->route('storemanage.index');
     }
