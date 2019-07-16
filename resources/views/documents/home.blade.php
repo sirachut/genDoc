@@ -187,7 +187,7 @@
                                 <th>ชื่อโครงการ</th>
                                 <th>เลขที่จัดซื้อ</th>
                                 <th>ฝ่ายงาน</th>
-                                <th>ห้างร้าน</th>
+                               
                                 <th>เจ้าของโครงการ</th>
                                 <th class="text-right">Actions</th>
                             </tr>
@@ -205,7 +205,7 @@
                                 <td width="37%">{{ $item->project_name }}</td>
                                 <td>{{ $item->project_number }}</td>
                                 <td>{{ $item->project_department }}</td>
-                                <td width="10%">{{ $item->store_name }}</td>
+                               
                                 <td><button type="button" class="btn btn-link" data-toggle="modal" data-target="#profile_modal"><i class="fas fa-id-card">&nbsp;</i>{{ $item->name }}</button>
                                     <!-- Modal -->
                                     <div class="modal fade" id="profile_modal" tabindex="-1" role="dialog" aria-labelledby="profile_modal" aria-hidden="true">

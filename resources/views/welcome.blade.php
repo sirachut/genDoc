@@ -123,8 +123,7 @@
                                 ให้สามารถดำเนินการได้อย่างเรียบง่ายและเป็นระบบเรียบร้อย พร้อมกับแปลงข้อมูลโครงการออกมาเป็นเอกสารฉบับดังเดิม 
                             </p>
 
-                                <button type="button" class="btn btn-light"> <i class="fas fa-address-card"></i> &nbsp; เกี่ยวกับเรา</button>
-                                <button type="button" class="btn btn-link"> <i class="fab fa-leanpub"></i>&nbsp; วิธีการใช้งาน</button>
+                             
                         </div>
                     </div>
 

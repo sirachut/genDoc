@@ -7,9 +7,13 @@
 <div class="container">
 
     <div class="centered">
-        
+    @if (Auth::user()->status == "admin")
+        <h1 style="color:aliceblue">รายการร้านค้าทั้งหมดในระบบ</h1>
+        <small style="color:aliceblue" >หมายเหตุ : รายการห้างร้าน/บริษัทที่ผู้ใช้งานทั้งหมดได้ทำการบันทึกไว้</small>
+    @else
         <h1 style="color:aliceblue">รายการร้านค้าของคุณ</h1>
         <small style="color:aliceblue" >หมายเหตุ : รายการห้างร้าน/บริษัทที่ได้ทำการบันทึกไว้</small>
+    @endif
 
     </div>
 

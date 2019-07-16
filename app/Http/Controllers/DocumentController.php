@@ -44,10 +44,35 @@ class DocumentController extends Controller
             )   
             ->get();
 
+            $Project_public = DB::table('projects')
+            ->orderBy('updated_at', 'desc')
+            ->where('projects.project_status', 'public')  
+            ->join('users','projects.id_fk', '=' ,'users.id')
+            ->join('stores','projects.store_fk', '=' , 'stores.store_id')
+            ->select(
+                'projects.*', 
+                'users.name',
+                'users.fullname',
+                'users.email',
+                'stores.store_name',
+                'stores.store_tel',
+                'stores.store_teletex',
+                'stores.store_address',
+                'stores.store_employee',
+                'stores.store_employeeNumber',
+                'stores.bank_branch',
+                'stores.bank_number',
+                'stores.bank_account',
+                'stores.bank_name',
+            )   
+            ->get();
+
             $StoreQueries = StoreModel::all();
 
             return view('documents.home')
             ->with(['Project_Queries' => $Project_Queries])
+            ->with(['Project_public' => $Project_public])
+
             ->with(['store_Q' => $StoreQueries]);
         }else {
 

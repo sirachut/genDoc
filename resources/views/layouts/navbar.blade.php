@@ -77,7 +77,7 @@
                                         @csrf
                                     </form>
                                @else
-                                    <a class="dropdown-item" href="profile">
+                                    <a class="dropdown-item" href="{{ url('/profile') }}">
                                         {{ __('โปร์ไฟล์') }}
                                     </a>
 
