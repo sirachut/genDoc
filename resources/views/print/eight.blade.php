@@ -47,6 +47,10 @@
          
           
         }
+        pre{
+            font-family: 'Sarabun', sans-serif;
+            font-size:16px;
+        }
         @page {
             size: A4 landscape;
         }
@@ -63,7 +67,7 @@
     
 @for ($j = 0; $j < $count[0]->getCount ; $j++)
 
-    <div class="container wrapper" style="font-size:16px">
+    <div class="container wrapper" style="font-size:14px">
         <div class="row">
             @php
                 $getsum = $product_Q[$j]->product_price * $product_Q[$j]->product_amount;

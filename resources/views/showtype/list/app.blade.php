@@ -69,7 +69,7 @@
                     
                             <div class="form-group col-md-12">
                                 <label for="product_name">{{ __('รายการ') }} </label>
-                                <textarea type="text" class="form-control" name="product_name" required></textarea>
+                                <textarea type="text" class="form-control" name="product_name" required maxlength="41"></textarea>
             
                             </div>
                             <div class="form-group col-md-12">
