@@ -46,7 +46,7 @@
 
     @if ($count[0]->getCount < 18)
     
-        <div class="container"><br><br>
+        <div class="container"><br>
             <div class="row">
 
                 <div class="col-sm-12 text-center">
@@ -149,7 +149,7 @@
         <div class="container">
                 
             <div class="row">
-                <div class="col-sm-12">
+                <div class="col-sm-12"><br>
                     <table class="table table-bordered table-sm" style="font-size:16px">
                         <thead>
                             <tr>
@@ -247,7 +247,7 @@
         </div>
 
     @elseif ($count[0]->getCount >= 18 && $count[0]->getCount < 30)
-        <div class="container"><br><br>
+        <div class="container"><br>
             <div class="row">
 
                 <div class="col-sm-12 text-center">
@@ -465,7 +465,7 @@
         </div>
     
     @elseif ($count[0]->getCount >= 30 && $count[0]->getCount < 51 )
-        <div class="container"><br><br>
+        <div class="container"><br>
             <div class="row">
 
                 <div class="col-sm-12 text-center">
@@ -744,7 +744,7 @@
         </div>
 
     @elseif ($count[0]->getCount >= 51 && $count[0]->getCount < 63 )
-        <div class="container"><br><br>
+        <div class="container"><br>
             <div class="row">
 
                 <div class="col-sm-12 text-center">
@@ -1022,7 +1022,7 @@
         </div>
 
     @elseif ($count[0]->getCount >= 63 && $count[0]->getCount < 83 )
-        <div class="container"><br><br>
+        <div class="container"><br>
             <div class="row">
 
                 <div class="col-sm-12 text-center">
@@ -1361,7 +1361,7 @@
         </div>
 
     @elseif ($count[0]->getCount >= 83 )
-        <div class="container"><br><br>
+        <div class="container"><br>
             <div class="row">
 
                 <div class="col-sm-12 text-center">

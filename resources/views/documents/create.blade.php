@@ -132,7 +132,7 @@
                             </div>
                             <div class="form-group col-md-8 ">
                                 <label for="project_name">{{ __('กิจกรรม/โครงการ') }}<span style="color:red;">*</span></label>
-                                <textarea type="text" id="project_name" class="form-control" name="project_name" required></textarea>
+                                <textarea type="text" id="project_name" class="form-control" name="project_name" required maxlength="40"></textarea>
                                 <small id="project_name" class="form-text text-muted">คำอธิบาย : ชื่อกิจกรรมหรือโครงการของเอกสารสั่งซื้อ</small>
 
                             </div>
