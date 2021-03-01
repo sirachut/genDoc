@@ -21,7 +21,7 @@
         "sass": "^1.15.2",
         "sass-loader": "^7.1.0",
         "vue": "^2.5.17",
-        "prismjs": "^1.16.0"
+        "prismjs": "^1.23.0"
     },
     "dependencies": {
         "@chenfengyuan/datepicker": "^1.0.7",
